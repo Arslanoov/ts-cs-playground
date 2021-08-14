@@ -37,7 +37,7 @@ describe("Linked List Node in Vanilla JS", () => {
   })
 })
 
-describe("Linked List in Vanille JS", () => {
+describe("Linked List in Vanilla JS", () => {
   test("prepend", () => {
     const list = new LinkedList()
     list.prepend("45")
@@ -50,5 +50,21 @@ describe("Linked List in Vanille JS", () => {
     list.append("45")
     list.append("65")
     expect(list.toArray()).toStrictEqual(["45", "65"])
+  })
+
+  test("find", () => {
+    const list = new LinkedList()
+    list.append("45")
+    list.append("65")
+    expect(list.find("45")).not.toBe(null)
+    expect(list.find("455")).toBe(null)
+  })
+
+  test("contains", () => {
+    const list = new LinkedList()
+    list.append("45")
+    list.append("65")
+    expect(list.contains("45")).toBe(true)
+    expect(list.contains("455")).toBe(false)
   })
 })

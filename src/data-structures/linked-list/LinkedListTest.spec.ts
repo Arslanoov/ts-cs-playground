@@ -51,4 +51,20 @@ describe("Linked List", () => {
     list.append("65")
     expect(list.toArray()).toStrictEqual(["45", "65"])
   })
+
+  test("find", () => {
+    const list = new LinkedList<string>()
+    list.append("45")
+    list.append("65")
+    expect(list.find("45")).not.toBe(null)
+    expect(list.find("455")).toBe(null)
+  })
+
+  test("contains", () => {
+    const list = new LinkedList<string>()
+    list.append("45")
+    list.append("65")
+    expect(list.contains("45")).toBe(true)
+    expect(list.contains("455")).toBe(false)
+  })
 })

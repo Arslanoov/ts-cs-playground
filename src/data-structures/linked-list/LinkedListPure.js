@@ -35,6 +35,38 @@ export class LinkedList {
     }
   }
 
+  contains(value) {
+    if (!this.head) {
+      return false
+    }
+
+    let currentNode = this.head
+    while (currentNode) {
+      if (currentNode.value === value) {
+        return true
+      }
+      currentNode = currentNode.next
+    }
+
+    return false
+  }
+
+  find(value) {
+    if (!this.head) {
+      return null
+    }
+
+    let currentNode = this.head
+    while (currentNode) {
+      if (currentNode.value === value) {
+        return currentNode
+      }
+      currentNode = currentNode.next
+    }
+
+    return null
+  }
+
   toArray() {
     const list = []
     let currentNode = this.head
