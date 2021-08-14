@@ -30,13 +30,18 @@ export class LinkedListNode<T, N = unknown> {
   }
 }
 
-export class LinkedList<T> {
-  private head: LinkedListNode<T> | null = null
-  private tail: LinkedListNode<T> | null = null
-
+interface LinkedListInterface<T> {
   // Insertion
   // Time complexity: O(1)
   // Space complexity: O(n)
+  prepend(value: T): void
+  append(value: T): void
+}
+
+export class LinkedList<T> implements LinkedListInterface<T> {
+  private head: LinkedListNode<T> | null = null
+  private tail: LinkedListNode<T> | null = null
+
   public prepend(value: T): void {
     const node = new LinkedListNode<T>(value)
     node.next = this.head
@@ -65,9 +70,5 @@ export class LinkedList<T> {
       currentNode = currentNode.next as LinkedListNode<T> | null
     }
     return list
-  }
-
-  public action(a: number, b: number): number {
-    return a + b
   }
 }
