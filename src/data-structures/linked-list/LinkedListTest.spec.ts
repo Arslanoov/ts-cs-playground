@@ -1,4 +1,4 @@
-import { LinkedListNode } from "./LinkedList.ts";
+import { LinkedList, LinkedListNode } from "./LinkedList.ts";
 
 describe("Linked List Node", () => {
   it("creates with empty ref", () => {
@@ -34,5 +34,21 @@ describe("Linked List Node", () => {
     const node = new LinkedListNode<number, null>(value, next)
 
     expect(node.toString(formatter)).toBe("value: 55")
+  })
+})
+
+describe("Linked List", () => {
+  test("prepend", () => {
+    const list = new LinkedList<string>()
+    list.prepend("45")
+    list.prepend("65")
+    expect(list.toArray()).toStrictEqual(["65", "45"])
+  })
+
+  test("append", () => {
+    const list = new LinkedList<string>()
+    list.append("45")
+    list.append("65")
+    expect(list.toArray()).toStrictEqual(["45", "65"])
   })
 })

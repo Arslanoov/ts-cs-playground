@@ -1,4 +1,4 @@
-import { LinkedListNode } from "./LinkedListPure.js";
+import { LinkedList, LinkedListNode } from "./LinkedListPure.js";
 
 describe("Linked List Node in Vanilla JS", () => {
   it("creates with empty ref", () => {
@@ -34,5 +34,21 @@ describe("Linked List Node in Vanilla JS", () => {
     const node = new LinkedListNode(value, next)
 
     expect(node.toString(formatter)).toBe("value: 55")
+  })
+})
+
+describe("Linked List in Vanille JS", () => {
+  test("prepend", () => {
+    const list = new LinkedList()
+    list.prepend("45")
+    list.prepend("65")
+    expect(list.toArray()).toStrictEqual(["65", "45"])
+  })
+
+  test("append", () => {
+    const list = new LinkedList()
+    list.append("45")
+    list.append("65")
+    expect(list.toArray()).toStrictEqual(["45", "65"])
   })
 })

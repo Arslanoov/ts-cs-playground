@@ -1,6 +1,6 @@
 // [value, reference] -> [value, reference] -> ...
 
-export class LinkedListNode<T, N = null> {
+export class LinkedListNode<T, N = unknown> {
   private data: T
   private ref: LinkedListNode<N> | null
 
@@ -30,15 +30,41 @@ export class LinkedListNode<T, N = null> {
   }
 }
 
-export class LinkedList {
-  constructor() {
+export class LinkedList<T> {
+  private head: LinkedListNode<T> | null = null
+  private tail: LinkedListNode<T> | null = null
 
-  }
   // Insertion
   // Time complexity: O(1)
   // Space complexity: O(n)
-  public append<T>(value: T): void {
+  public prepend(value: T): void {
+    const node = new LinkedListNode<T>(value)
+    node.next = this.head
+    this.head = node
+    if (!this.tail) {
+      this.tail = node
+    }
+  }
 
+  public append(value: T): void {
+    const node = new LinkedListNode<T>(value)
+    if (!this.head) {
+      this.head = node
+      this.tail = node
+    } else {
+      this.tail.next = node
+      this.tail = node
+    }
+  }
+
+  public toArray(): T[] {
+    const list: T[] = []
+    let currentNode = this.head
+    while (currentNode) {
+      list.push(currentNode.value)
+      currentNode = currentNode.next as LinkedListNode<T> | null
+    }
+    return list
   }
 
   public action(a: number, b: number): number {
