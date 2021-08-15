@@ -42,6 +42,11 @@ interface LinkedListInterface<T> {
   // Space complexity: O(n)
   contains(value: T): boolean
   find(value: T): LinkedListNode<T> | null
+
+  // Deletion
+  // Time complexity: O(n)
+  // Space complexity: O(n)
+  remove(value: T): T | null
 }
 
 export class LinkedList<T> implements LinkedListInterface<T> {
@@ -106,6 +111,76 @@ export class LinkedList<T> implements LinkedListInterface<T> {
       currentNode = currentNode.next as LinkedListNode<T> | null
     }
     return null
+  }
+
+  remove(value: T): T | null {
+    if (!this.head) {
+      return null
+    }
+
+    let removedNode = null
+    // Remove head
+    while (this.head && this.head.value === value) {
+      removedNode = this.head
+      this.head = this.head.next as LinkedListNode<T> | null
+    }
+
+    let currentNode = this.head
+    if (currentNode) {
+      while (currentNode.next) {
+        if (currentNode.next.value === value) {
+          removedNode = currentNode.next
+          currentNode.next = currentNode.next.next
+        } else {
+          currentNode = currentNode.next as LinkedListNode<T> | null
+        }
+      }
+    }
+
+    // Remove tail
+    if (this.tail && this.tail.value === value) {
+      this.tail = currentNode
+    }
+
+    return removedNode
+  }
+
+  removeHead(): LinkedListNode<T> | null {
+    if (!this.head) {
+      return null
+    }
+
+    const removedNode = this.head
+    if (this.head.next) {
+      this.head = this.head.next as LinkedListNode<T>
+    } else {
+      this.head = null
+      this.tail = null
+    }
+
+    return removedNode
+  }
+
+  removeTail(): LinkedListNode<T> | null {
+    const removedNode = this.tail
+    if (this.head === this.tail) {
+      this.head = null
+      this.tail = null
+      return removedNode
+    }
+
+    let currentNode = this.head
+    while (currentNode) {
+      if (currentNode.next === this.tail) {
+        currentNode.next = null
+      } else {
+        currentNode = currentNode.next as LinkedListNode<T> | null
+      }
+    }
+
+    this.tail = currentNode
+
+    return removedNode
   }
 
   public toString(): string {

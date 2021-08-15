@@ -67,4 +67,41 @@ describe("Linked List", () => {
     expect(list.contains("45")).toBe(true)
     expect(list.contains("455")).toBe(false)
   })
+
+  test("remove", () => {
+    const list = new LinkedList<string>()
+    list.append("45")
+    list.append("65")
+    expect(list.contains("45")).toBe(true)
+    expect(list.contains("65")).toBe(true)
+    list.remove("65")
+    expect(list.contains("45")).toBe(true)
+    expect(list.contains("65")).toBe(false)
+  })
+
+  test("remove head", () => {
+    const list = new LinkedList<string>()
+    list.append("45")
+    list.append("65")
+    expect(list.contains("45")).toBe(true)
+    list.removeHead()
+    expect(list.contains("45")).toBe(false)
+  })
+
+  test("remove tail", () => {
+    const list = new LinkedList<string>()
+    list.append("45")
+    list.append("65")
+    expect(list.contains("65")).toBe(true)
+    list.removeTail()
+    expect(list.contains("65")).toBe(false)
+  })
+
+  test("from array", () => {
+    const list = new LinkedList<string>()
+    expect(list.toArray()).toStrictEqual([])
+    const items = ["test", "test1", "test2"]
+    list.fromArray(items)
+    expect(list.toArray()).toStrictEqual(items)
+  })
 })
