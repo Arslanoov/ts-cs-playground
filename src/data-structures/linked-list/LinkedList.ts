@@ -1,10 +1,10 @@
 // [value, reference] -> [value, reference] -> ...
 
-export class LinkedListNode<T, N = unknown> {
+export class LinkedListNode<T> {
   private data: T
-  private ref: LinkedListNode<N> | null
+  private ref: LinkedListNode<T> | null
 
-  public constructor(value: T, next: LinkedListNode<N> = null) {
+  public constructor(value: T, next: LinkedListNode<T> = null) {
     this.data = value
     this.ref = next
   }
@@ -17,7 +17,7 @@ export class LinkedListNode<T, N = unknown> {
     return this.data
   }
 
-  public get next(): LinkedListNode<N> {
+  public get next(): LinkedListNode<T> {
     return this.ref
   }
 
@@ -30,7 +30,7 @@ export class LinkedListNode<T, N = unknown> {
   }
 }
 
-interface LinkedListInterface<T> {
+export interface LinkedListInterface<T> {
   // Insertion
   // Time complexity: O(1)
   // Space complexity: O(n)
@@ -78,7 +78,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     let currentNode = this.head
     while (currentNode) {
       list.push(currentNode.value)
-      currentNode = currentNode.next as LinkedListNode<T> | null
+      currentNode = currentNode.next
     }
     return list
   }
@@ -93,7 +93,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
       if (currentNode.value === value) {
         return true
       }
-      currentNode = currentNode.next as LinkedListNode<T> | null
+      currentNode = currentNode.next
     }
     return false
   }
@@ -108,7 +108,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
       if (currentNode.value === value) {
         return currentNode
       }
-      currentNode = currentNode.next as LinkedListNode<T> | null
+      currentNode = currentNode.next
     }
     return null
   }
@@ -122,7 +122,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     // Remove head
     while (this.head && this.head.value === value) {
       removedNode = this.head
-      this.head = this.head.next as LinkedListNode<T> | null
+      this.head = this.head.next
     }
 
     let currentNode = this.head
@@ -132,7 +132,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
           removedNode = currentNode.next
           currentNode.next = currentNode.next.next
         } else {
-          currentNode = currentNode.next as LinkedListNode<T> | null
+          currentNode = currentNode.next
         }
       }
     }
@@ -152,7 +152,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
 
     const removedNode = this.head
     if (this.head.next) {
-      this.head = this.head.next as LinkedListNode<T>
+      this.head = this.head.next
     } else {
       this.head = null
       this.tail = null
@@ -174,7 +174,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
       if (currentNode.next === this.tail) {
         currentNode.next = null
       } else {
-        currentNode = currentNode.next as LinkedListNode<T> | null
+        currentNode = currentNode.next
       }
     }
 
@@ -192,7 +192,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
       next = currentNode.next
       currentNode.next = prev
       prev = currentNode
-      currentNode = next as LinkedListNode<T> | null
+      currentNode = next
     }
 
     this.tail = this.head
