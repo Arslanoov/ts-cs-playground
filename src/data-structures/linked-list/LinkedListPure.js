@@ -67,6 +67,74 @@ export class LinkedList {
     return null
   }
 
+  remove(value) {
+    if (!this.head) {
+      return null
+    }
+
+    let removedNode = null
+    while (this.head && this.head.value === value) {
+      removedNode = this.head
+      this.head = this.head.next
+    }
+
+    let currentNode = this.head
+    if (currentNode) {
+      while (currentNode.next) {
+        if (currentNode.next.value === value) {
+          removedNode = currentNode.next
+          currentNode.next = currentNode.next.next
+        } else {
+          currentNode = currentNode.next
+        }
+      }
+    }
+
+    if (this.tail && this.tail.value === value) {
+      this.tail = currentNode
+    }
+
+    return removedNode
+  }
+
+  removeHead() {
+    if (!this.head) {
+      return null
+    }
+
+    const removedNode = this.head
+    if (this.head.next) {
+      this.head = this.head.next
+    } else {
+      this.head = null
+      this.tail = null
+    }
+
+    return removedNode
+  }
+
+  removeTail() {
+    const removedNode = this.head
+    if (this.head === this.tail) {
+      this.head = null
+      this.tail = null
+      return removedNode
+    }
+
+    let currentNode = this.head
+    while (currentNode) {
+      if (currentNode.next === this.tail) {
+        currentNode.next = null
+      } else {
+        currentNode = currentNode.next
+      }
+    }
+
+    this.tail = currentNode
+
+    return removedNode
+  }
+
   toArray() {
     const list = []
     let currentNode = this.head
@@ -77,5 +145,29 @@ export class LinkedList {
     }
 
     return list
+  }
+
+  reverse() {
+    let currentNode = this.head
+    let prev = null
+    let next = null
+
+    while (currentNode) {
+      next = currentNode.next
+      currentNode.next = prev
+      prev = currentNode
+      currentNode = next
+    }
+
+    this.tail = this.head
+    this.head = prev
+  }
+
+  toString() {
+    return this.toArray().toString()
+  }
+
+  fromArray(list) {
+    list.forEach((value) => this.append(value))
   }
 }

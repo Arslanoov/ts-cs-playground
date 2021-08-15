@@ -1,10 +1,10 @@
 // [value, reference] -> [value, reference] -> ...
 
-export class LinkedListNode<T, N = unknown> {
+export class LinkedListNode<T> {
   private data: T
-  private ref: LinkedListNode<N> | null
+  private ref: LinkedListNode<T> | null
 
-  public constructor(value: T, next: LinkedListNode<N> = null) {
+  public constructor(value: T, next: LinkedListNode<T> = null) {
     this.data = value
     this.ref = next
   }
@@ -17,7 +17,7 @@ export class LinkedListNode<T, N = unknown> {
     return this.data
   }
 
-  public get next(): LinkedListNode<N> {
+  public get next(): LinkedListNode<T> {
     return this.ref
   }
 
@@ -30,7 +30,7 @@ export class LinkedListNode<T, N = unknown> {
   }
 }
 
-interface LinkedListInterface<T> {
+export interface LinkedListInterface<T> {
   // Insertion
   // Time complexity: O(1)
   // Space complexity: O(n)
@@ -42,6 +42,11 @@ interface LinkedListInterface<T> {
   // Space complexity: O(n)
   contains(value: T): boolean
   find(value: T): LinkedListNode<T> | null
+
+  // Deletion
+  // Time complexity: O(n)
+  // Space complexity: O(n)
+  remove(value: T): T | null
 }
 
 export class LinkedList<T> implements LinkedListInterface<T> {
@@ -73,7 +78,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     let currentNode = this.head
     while (currentNode) {
       list.push(currentNode.value)
-      currentNode = currentNode.next as LinkedListNode<T> | null
+      currentNode = currentNode.next
     }
     return list
   }
@@ -88,7 +93,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
       if (currentNode.value === value) {
         return true
       }
-      currentNode = currentNode.next as LinkedListNode<T> | null
+      currentNode = currentNode.next
     }
     return false
   }
@@ -103,9 +108,95 @@ export class LinkedList<T> implements LinkedListInterface<T> {
       if (currentNode.value === value) {
         return currentNode
       }
-      currentNode = currentNode.next as LinkedListNode<T> | null
+      currentNode = currentNode.next
     }
     return null
+  }
+
+  remove(value: T): T | null {
+    if (!this.head) {
+      return null
+    }
+
+    let removedNode = null
+    // Remove head
+    while (this.head && this.head.value === value) {
+      removedNode = this.head
+      this.head = this.head.next
+    }
+
+    let currentNode = this.head
+    if (currentNode) {
+      while (currentNode.next) {
+        if (currentNode.next.value === value) {
+          removedNode = currentNode.next
+          currentNode.next = currentNode.next.next
+        } else {
+          currentNode = currentNode.next
+        }
+      }
+    }
+
+    // Remove tail
+    if (this.tail && this.tail.value === value) {
+      this.tail = currentNode
+    }
+
+    return removedNode
+  }
+
+  removeHead(): LinkedListNode<T> | null {
+    if (!this.head) {
+      return null
+    }
+
+    const removedNode = this.head
+    if (this.head.next) {
+      this.head = this.head.next
+    } else {
+      this.head = null
+      this.tail = null
+    }
+
+    return removedNode
+  }
+
+  removeTail(): LinkedListNode<T> | null {
+    const removedNode = this.tail
+    if (this.head === this.tail) {
+      this.head = null
+      this.tail = null
+      return removedNode
+    }
+
+    let currentNode = this.head
+    while (currentNode) {
+      if (currentNode.next === this.tail) {
+        currentNode.next = null
+      } else {
+        currentNode = currentNode.next
+      }
+    }
+
+    this.tail = currentNode
+
+    return removedNode
+  }
+
+  public reverse(): void {
+    let currentNode = this.head
+    let prev = null
+    let next = null
+
+    while (currentNode) {
+      next = currentNode.next
+      currentNode.next = prev
+      prev = currentNode
+      currentNode = next
+    }
+
+    this.tail = this.head
+    this.head = prev
   }
 
   public toString(): string {
