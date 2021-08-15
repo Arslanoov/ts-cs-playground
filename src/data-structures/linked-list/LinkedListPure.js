@@ -147,6 +147,22 @@ export class LinkedList {
     return list
   }
 
+  reverse() {
+    let currentNode = this.head
+    let prev = null
+    let next = null
+
+    while (currentNode) {
+      next = currentNode.next
+      currentNode.next = prev
+      prev = currentNode
+      currentNode = next
+    }
+
+    this.tail = this.head
+    this.head = prev
+  }
+
   toString() {
     return this.toArray().toString()
   }

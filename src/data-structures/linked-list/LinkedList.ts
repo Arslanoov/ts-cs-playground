@@ -183,6 +183,22 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     return removedNode
   }
 
+  public reverse(): void {
+    let currentNode = this.head
+    let prev = null
+    let next = null
+
+    while (currentNode) {
+      next = currentNode.next
+      currentNode.next = prev
+      prev = currentNode
+      currentNode = next as LinkedListNode<T> | null
+    }
+
+    this.tail = this.head
+    this.head = prev
+  }
+
   public toString(): string {
     return this.toArray().toString()
   }

@@ -104,4 +104,13 @@ describe("Linked List", () => {
     list.fromArray(items)
     expect(list.toArray()).toStrictEqual(items)
   })
+
+  test("reverse", () => {
+    const list = new LinkedList<string>()
+    const items = ["test", "test1", "test2"]
+    list.fromArray(items)
+    expect(list.toArray()).toStrictEqual(items)
+    list.reverse()
+    expect(list.toArray()).toStrictEqual(items.reverse())
+  })
 })
