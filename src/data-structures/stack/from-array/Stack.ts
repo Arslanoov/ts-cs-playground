@@ -1,4 +1,4 @@
-interface StackInterface<T> {
+export interface StackInterface<T> {
   push(value: T): void
   pop(): T | null
   peek(): T | null

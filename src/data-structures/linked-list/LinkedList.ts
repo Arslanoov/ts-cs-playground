@@ -210,4 +210,8 @@ export class LinkedList<T> implements LinkedListInterface<T> {
   public get first() {
     return this.head
   }
+
+  public get last() {
+    return this.tail
+  }
 }

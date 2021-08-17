@@ -114,7 +114,7 @@ export class LinkedList {
   }
 
   removeTail() {
-    const removedNode = this.head
+    const removedNode = this.tail
     if (this.head === this.tail) {
       this.head = null
       this.tail = null
@@ -173,5 +173,9 @@ export class LinkedList {
 
   get first() {
     return this.head
+  }
+
+  get last() {
+    return this.tail
   }
 }
