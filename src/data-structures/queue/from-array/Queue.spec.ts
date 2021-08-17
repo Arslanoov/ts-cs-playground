@@ -1,6 +1,6 @@
 import { Queue } from "./Queue";
 
-describe("Queue (simple implementation)", () => {
+describe("Queue (array implementation)", () => {
   test("enqueue", () => {
     const list = new Queue<string>()
     list.enqueue("item1")

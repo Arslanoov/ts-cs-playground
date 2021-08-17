@@ -206,4 +206,8 @@ export class LinkedList<T> implements LinkedListInterface<T> {
   public fromArray(list: T[]): void {
     list.forEach((value) => this.append(value))
   }
+
+  public get first() {
+    return this.head
+  }
 }

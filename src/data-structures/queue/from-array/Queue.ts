@@ -1,4 +1,4 @@
-interface QueueInterface<T> {
+export interface QueueInterface<T> {
   enqueue(value: T): void
   dequeue(): T | null
   peek(): T | null

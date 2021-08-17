@@ -170,4 +170,8 @@ export class LinkedList {
   fromArray(list) {
     list.forEach((value) => this.append(value))
   }
+
+  get first() {
+    return this.head
+  }
 }
