@@ -1,29 +1,25 @@
-interface StackInterface<T> {
-  push(value: T): void
-  pop(): T | null
+export interface QueueInterface<T> {
+  enqueue(value: T): void
+  dequeue(): T | null
   peek(): T | null
   isEmpty(): boolean
   getLength(): number
   toArray(): T[]
 }
 
-export class Stack<T> implements StackInterface<T> {
+export class Queue<T> implements QueueInterface<T> {
   private list: T[] = []
 
-  public push(value: T) {
+  public enqueue(value: T) {
     this.list.push(value)
   }
 
-  public pop(): T | null {
-    return this.list.pop() ?? null
+  public dequeue(): T | null {
+    return this.list.shift() ?? null
   }
 
   public peek(): T | null {
-    if (this.isEmpty()) {
-      return null
-    }
-
-    return this.list[this.list.length - 1] ?? null
+    return this.list[0] ?? null
   }
 
   public isEmpty(): boolean {

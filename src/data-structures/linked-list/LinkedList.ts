@@ -98,14 +98,14 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     return false
   }
 
-  public find(value): LinkedListNode<T> {
+  public find(value, cb: ((item: LinkedListNode<T>, value: T) => boolean) | null = null): LinkedListNode<T> {
     if (!this.head) {
       return null
     }
 
     let currentNode = this.head
     while (currentNode) {
-      if (currentNode.value === value) {
+      if (cb ? cb(currentNode, value) : currentNode.value === value) {
         return currentNode
       }
       currentNode = currentNode.next
@@ -205,5 +205,13 @@ export class LinkedList<T> implements LinkedListInterface<T> {
 
   public fromArray(list: T[]): void {
     list.forEach((value) => this.append(value))
+  }
+
+  public get first() {
+    return this.head
+  }
+
+  public get last() {
+    return this.tail
   }
 }

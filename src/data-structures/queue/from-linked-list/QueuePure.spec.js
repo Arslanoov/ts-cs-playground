@@ -1,6 +1,6 @@
 import { Queue } from "./QueuePure";
 
-describe("Queue with Vanilla JS (simple implementation)", () => {
+describe("Queue with Vanilla JS (linked list implementation)", () => {
   test("enqueue", () => {
     const list = new Queue()
     list.enqueue("item1")
