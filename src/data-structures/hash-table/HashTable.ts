@@ -5,13 +5,22 @@ interface Keys {
   [key: string]: number
 }
 
-// TODO: Add O(n)
+// O(1) with perfect hash function
 interface HashTableInterface<T> {
+  // Search
+  // O(n)
   get(key: string): T | null
   getKeys(): string[]
   getValues(): T[]
+
   has(key: string): boolean
+
+  // Insertion
+  // O(n)
   set(key: string, value: T): void
+
+  // Deletion
+  // O(n)
   delete(key: string): T | null
 }
 
