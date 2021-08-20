@@ -4,7 +4,7 @@ import { PriorityQueue } from "./PriorityQueue"
  * @see https://github.com/trekhleb/javascript-algorithms/blob/4548296affb227c29ead868309e48667f8280c55/src/data-structures/priority-queue/__test__/PriorityQueue.test.js
  * TODO: Write own tests
  */
-describe("PriorityQueue", () => {
+describe("PriorityQueue with Vanilla JS", () => {
   it("should create default priority queue", () => {
     const priorityQueue = new PriorityQueue()
 
