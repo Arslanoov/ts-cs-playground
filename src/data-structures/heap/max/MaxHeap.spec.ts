@@ -1,6 +1,7 @@
 import { MaxHeap } from "./MaxHeap"
 
 /**
+ * TODO: Write my own tests
  * @see https://github.com/trekhleb/javascript-algorithms/blob/master/src/data-structures/heap/__test__/MaxHeap.test.js
  */
 describe("MaxHeap", () => {
