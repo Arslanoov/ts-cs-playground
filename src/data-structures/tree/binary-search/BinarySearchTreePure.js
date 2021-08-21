@@ -1,11 +1,11 @@
-import { TreeNode } from "../TreeNode"
+import { TreeNode } from "../TreeNodePure"
 
-export class BinarySearchTreeNode<T> extends TreeNode<T, BinarySearchTreeNode<T>> {
-  public constructor(value: T | null = null) {
+export class BinarySearchTreeNode extends TreeNode {
+  constructor(value = null) {
     super(value)
   }
 
-  public insert(value: T): BinarySearchTreeNode<T> {
+  insert(value) {
     if (this.value === null) {
       this.value = value
       return this
@@ -34,7 +34,7 @@ export class BinarySearchTreeNode<T> extends TreeNode<T, BinarySearchTreeNode<T>
     }
   }
 
-  public find(value: T): BinarySearchTreeNode<T> | null {
+  find(value) {
     if (this.value === value) {
       return this
     }
@@ -50,11 +50,11 @@ export class BinarySearchTreeNode<T> extends TreeNode<T, BinarySearchTreeNode<T>
     return null
   }
 
-  public contains(value: T): boolean {
+  contains(value) {
     return !!this.find(value)
   }
 
-  public findMin(): BinarySearchTreeNode<T> {
+  findMin() {
     if (!this.left) {
       return this
     }
@@ -62,7 +62,7 @@ export class BinarySearchTreeNode<T> extends TreeNode<T, BinarySearchTreeNode<T>
     return this.left.findMin()
   }
 
-  public remove(value: T): boolean {
+  remove(value) {
     const itemToRemove = this.find(value)
     if (!itemToRemove) {
       throw new Error("Item not found.")
@@ -84,7 +84,7 @@ export class BinarySearchTreeNode<T> extends TreeNode<T, BinarySearchTreeNode<T>
       const child = itemToRemove.left || itemToRemove.right
       parent ?
         parent.replaceChild(itemToRemove, child) :
-        BinarySearchTreeNode.copy<BinarySearchTreeNode<T>, BinarySearchTreeNode<T>>(child, itemToRemove)
+        BinarySearchTreeNode.copy(child, itemToRemove)
     }
 
     itemToRemove.parent = null
@@ -93,29 +93,24 @@ export class BinarySearchTreeNode<T> extends TreeNode<T, BinarySearchTreeNode<T>
   }
 }
 
-interface BinarySearchTreeInterface<T> {
-  insert(value: T): BinarySearchTreeNode<T>
-  contains(value: T): boolean
-  remove(value: T): boolean
-  toString(): string
-}
+export class BinarySearchTree {
+  constructor() {
+    this.root = new BinarySearchTreeNode(null)
+  }
 
-export class BinarySearchTree<T> implements BinarySearchTreeInterface<T> {
-  public root = new BinarySearchTreeNode<T>(null as T)
-
-  public insert(value: T): BinarySearchTreeNode<T> {
+  insert(value) {
     return this.root.insert(value)
   }
 
-  public contains(value: T): boolean {
+  contains(value) {
     return this.root.contains(value)
   }
 
-  public remove(value: T): boolean {
+  remove(value) {
     return this.root.remove(value)
   }
 
-  public toString(): string {
+  toString() {
     return this.root.toString()
   }
 }

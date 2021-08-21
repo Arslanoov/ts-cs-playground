@@ -1,12 +1,11 @@
 import { HashTable } from "../hash-table/HashTable"
 
 export class TreeNode<T, W = TreeNode<T>> {
-  protected value: T | null = null
-  protected meta: HashTable<T>
-
+  public value: T | null = null
   public left: W | null = null
   public right: W | null = null
   public parent: W | null = null
+  public meta: HashTable<T>
 
   public constructor(value: T) {
     this.value = value

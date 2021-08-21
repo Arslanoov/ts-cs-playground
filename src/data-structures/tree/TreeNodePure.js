@@ -1,6 +1,6 @@
 import { HashTable } from "../hash-table/HashTablePure"
 
-export class T {
+export class TreeNode {
   constructor(value) {
     this.left = null
     this.right = null
