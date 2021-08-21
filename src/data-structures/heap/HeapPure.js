@@ -85,27 +85,30 @@ export class Heap {
 
   remove(item) {
     const itemsToRemove = this.find(item).length
-    for (let i = 0; i < itemsToRemove; i++) {
-      const itemToRemove = this.find(item).pop()
 
-      if (itemsToRemove === this.container.length - 1) {
+    for (let i = 0; i < itemsToRemove; i++) {
+      const removeIndex = this.find(item).pop()
+
+      if (removeIndex === (this.container.length - 1)) {
         this.container.pop()
       } else {
-        this.container[itemsToRemove] = this.container.pop()
-        const parent = this.parent(itemToRemove)
+        this.container[removeIndex] = this.container.pop()
+        const parent = this.parent(removeIndex)
         if (
-          this.hasLeftChild(itemToRemove) &&
+          this.hasLeftChild(removeIndex) &&
           (
             !parent ||
-            this.pairIsInCorrectOrder(parent, this.container[itemToRemove])
+            this.pairIsInCorrectOrder(parent, this.container[removeIndex])
           )
         ) {
-          this.heapifyDown(itemToRemove)
+          this.heapifyDown(removeIndex)
         } else {
-          this.heapifyUp(itemToRemove)
+          this.heapifyUp(removeIndex)
         }
       }
     }
+
+    return this
   }
 
   heapifyUp(startIndex) {
@@ -126,7 +129,7 @@ export class Heap {
     while (this.hasLeftChild(current)) {
       if (
         this.hasRightChild(current) &&
-        !this.pairIsInCorrectOrder(this.rightChild(current), this.leftChild(current))
+        this.pairIsInCorrectOrder(this.rightChild(current), this.leftChild(current))
       ) {
         next = this.getRightChildIndex(current)
       } else {

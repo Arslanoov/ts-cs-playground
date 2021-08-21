@@ -15,9 +15,9 @@ export interface HeapHelpersInterface {
 export interface HeapInterface {
   swap(first: number, second: number): void
   peek(): number | null
-  pool(): number | null
+  poll(): number | null
   add(item: number): void
-  remove(item: number): void
+  remove(item: number): Heap
   find(item: number): number[]
   isEmpty(): boolean
   toString(): string
@@ -78,7 +78,7 @@ export class Heap implements HeapInterface, HeapHelpersInterface {
     return this.container[0] ?? null
   }
 
-  public pool(): number | null {
+  public poll(): number | null {
     if (this.isEmpty()) {
       return null
     }
@@ -109,31 +109,35 @@ export class Heap implements HeapInterface, HeapHelpersInterface {
   public add(item: number) {
     this.container.push(item)
     this.heapifyUp()
+    return this
   }
 
-  public remove(item: number) {
+  public remove(item: number): Heap {
     const itemsToRemove: number = this.find(item).length
-    for (let i = 0; i < itemsToRemove; i++) {
-      const itemToRemove = this.find(item).pop()
 
-      if (itemsToRemove === this.container.length - 1) {
+    for (let i = 0; i < itemsToRemove; i++) {
+      const removeIndex = this.find(item).pop()
+
+      if (removeIndex === (this.container.length - 1)) {
         this.container.pop()
       } else {
-        this.container[itemsToRemove] = this.container.pop()
-        const parent = this.parent(itemToRemove)
+        this.container[removeIndex] = this.container.pop()
+        const parent = this.parent(removeIndex)
         if (
-          this.hasLeftChild(itemToRemove) &&
+          this.hasLeftChild(removeIndex) &&
           (
             !parent ||
-            this.pairIsInCorrectOrder(parent, this.container[itemToRemove])
+            this.pairIsInCorrectOrder(parent, this.container[removeIndex])
           )
         ) {
-          this.heapifyDown(itemToRemove)
+          this.heapifyDown(removeIndex)
         } else {
-          this.heapifyUp(itemToRemove)
+          this.heapifyUp(removeIndex)
         }
       }
     }
+
+    return this
   }
 
   public heapifyUp(startIndex?: number): void {
@@ -154,7 +158,7 @@ export class Heap implements HeapInterface, HeapHelpersInterface {
     while (this.hasLeftChild(current)) {
       if (
         this.hasRightChild(current) &&
-        !this.pairIsInCorrectOrder(this.rightChild(current), this.leftChild(current))
+        this.pairIsInCorrectOrder(this.rightChild(current), this.leftChild(current))
       ) {
         next = this.getRightChildIndex(current)
       } else {
