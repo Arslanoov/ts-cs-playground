@@ -6,8 +6,8 @@ interface AvlTreeInterface<T> {
   balance(node: BinarySearchTreeNode<T>): void
   rotateLeftLeft(root: BinarySearchTreeNode<T>): void
   rotateLeftRight(root: BinarySearchTreeNode<T>): void
-  rotateRightRight(root: BinarySearchTreeNode<T>): void
   rotateRightLeft(root: BinarySearchTreeNode<T>): void
+  rotateRightRight(root: BinarySearchTreeNode<T>): void
 }
 
 export class AvlTree<T> extends BinarySearchTree<T> implements AvlTreeInterface<T> {
