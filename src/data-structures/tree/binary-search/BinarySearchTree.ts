@@ -72,7 +72,7 @@ export class BinarySearchTreeNode<T> extends TreeNode<T, BinarySearchTreeNode<T>
     if (!itemToRemove.left && !itemToRemove.right) {
       parent ? parent.removeChild(itemToRemove) : itemToRemove.setValue(undefined)
     } else if (itemToRemove.left && itemToRemove.right) {
-      const nextBiggerNode = this.right.findMin()
+      const nextBiggerNode = itemToRemove.right.findMin()
       if (nextBiggerNode !== itemToRemove.right) {
         this.remove(nextBiggerNode.value)
         itemToRemove.setValue(nextBiggerNode.value)
