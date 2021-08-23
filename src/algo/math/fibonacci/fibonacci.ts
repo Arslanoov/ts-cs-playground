@@ -3,6 +3,8 @@
 // fib(2) -> [1, 1] (1 + 0)
 // fib(3) -> [1, 1, 2] (1 + 1)
 // fib(4) -> [1, 1, 2, 3] (1 + 2)
+
+// TODO: Add DP approach
 export const fib = (pos: number): number[] => {
   const path: number[] = []
   let current: number = 1
