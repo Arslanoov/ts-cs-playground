@@ -1,4 +1,4 @@
-import { fib, fibValue, fibRecursionValue } from "./fibonacci"
+import { fib, fibValue, fibRecursionValue, fibFormula } from "./fibonacci"
 
 describe("Algo: fib number", () => {
   test("iteration method with path", () => {
@@ -38,5 +38,18 @@ describe("Algo: fib number", () => {
     expect(fibRecursionValue(8)).toEqual(21)
     expect(fibRecursionValue(9)).toEqual(34)
     expect(fibRecursionValue(10)).toEqual(55)
+  })
+
+  test("formula", () => {
+    expect(fibFormula(1)).toEqual(1)
+    expect(fibFormula(2)).toEqual(1)
+    expect(fibFormula(3)).toEqual(2)
+    expect(fibFormula(4)).toEqual(3)
+    expect(fibFormula(5)).toEqual(5)
+    expect(fibFormula(6)).toEqual(8)
+    expect(fibFormula(7)).toEqual(13)
+    expect(fibFormula(8)).toEqual(21)
+    expect(fibFormula(9)).toEqual(34)
+    expect(fibFormula(10)).toEqual(55)
   })
 })

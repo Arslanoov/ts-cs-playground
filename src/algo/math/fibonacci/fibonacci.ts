@@ -44,3 +44,8 @@ export const fibRecursionValue = (pos: number, path: {
 
   return path[pos] = fibRecursionValue(pos - 1, path) + fibRecursionValue(pos - 2, path)
 }
+
+export const fibFormula = (pos: number): number => {
+  const sqrt = Math.sqrt(5)
+  return Math.floor((((1 + sqrt) / 2) ** pos) / sqrt + 0.5)
+}
