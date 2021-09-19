@@ -1,6 +1,9 @@
 import { GraphVertex } from "./graphVertex"
 import { GraphEdge } from "./graphEdge"
 
+/**
+ * @see https://github.com/trekhleb/javascript-algorithms/blob/master/src/data-structures/graph/__test__/GraphVertex.test.js
+ */
 describe("Graph Vertex", () => {
   it("should throw an error when trying to create vertex without value", () => {
     let vertex = null

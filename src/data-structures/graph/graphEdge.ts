@@ -3,6 +3,7 @@ import { GraphVertexInterface } from "./graphVertex"
 export interface GraphEdgeInterface<T> {
   start: GraphVertexInterface<T>
   end: GraphVertexInterface<T>
+  weight: number
 
   getKey(): string
   reverse(): void

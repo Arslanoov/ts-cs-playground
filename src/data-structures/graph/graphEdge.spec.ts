@@ -1,6 +1,9 @@
 import { GraphVertex } from "./graphVertex"
 import { GraphEdge } from "./graphEdge"
 
+/**
+ * @see https://github.com/trekhleb/javascript-algorithms/blob/master/src/data-structures/graph/__test__/GraphEdge.test.js
+ */
 describe("Graph Edge", () => {
   it("should create graph edge with default weight", () => {
     const startVertex = new GraphVertex("A")
