@@ -1,19 +1,19 @@
+// [value, reference] -> [value, reference] -> ...
+
 export class LinkedListNode {
   constructor(value, next = null) {
     this.value = value
     this.next = next
   }
 
-  toString(callback) {
-    return callback ? callback(this.value) : `${this.value}`
+  toString(formatter) {
+    return formatter ? formatter(this.value) : `${this.value}`
   }
 }
 
 export class LinkedList {
-  constructor() {
-    this.head = null
-    this.tail = null
-  }
+  head = null
+  tail = null
 
   prepend(value) {
     const node = new LinkedListNode(value)
@@ -35,6 +35,16 @@ export class LinkedList {
     }
   }
 
+  toArray() {
+    const list = []
+    let currentNode = this.head
+    while (currentNode) {
+    list.push(currentNode.value)
+      currentNode = currentNode.next
+    }
+    return list
+  }
+
   contains(value) {
     if (!this.head) {
       return false
@@ -47,23 +57,21 @@ export class LinkedList {
       }
       currentNode = currentNode.next
     }
-
     return false
   }
 
-  find(value) {
+  find(value, cb = null) {
     if (!this.head) {
       return null
     }
 
     let currentNode = this.head
     while (currentNode) {
-      if (currentNode.value === value) {
+      if (cb ? cb(currentNode, value) : currentNode.value === value) {
         return currentNode
       }
       currentNode = currentNode.next
     }
-
     return null
   }
 
@@ -73,6 +81,7 @@ export class LinkedList {
     }
 
     let removedNode = null
+    // Remove head
     while (this.head && this.head.value === value) {
       removedNode = this.head
       this.head = this.head.next
@@ -90,6 +99,7 @@ export class LinkedList {
       }
     }
 
+    // Remove tail
     if (this.tail && this.tail.value === value) {
       this.tail = currentNode
     }
@@ -133,18 +143,6 @@ export class LinkedList {
     this.tail = currentNode
 
     return removedNode
-  }
-
-  toArray() {
-    const list = []
-    let currentNode = this.head
-
-    while (currentNode) {
-      list.push(currentNode.value)
-      currentNode = currentNode.next
-    }
-
-    return list
   }
 
   reverse() {
