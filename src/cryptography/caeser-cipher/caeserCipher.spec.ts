@@ -1,6 +1,6 @@
 import { caeserCipherEncrypt, caeserCipherDecrypt } from "./caeserCipher"
 
-describe("Caeser cipher", () => {
+describe("Crypto: Caeser cipher", () => {
   it("works", () => {
     expect(caeserCipherEncrypt("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 23)).toBe("XYZABCDEFGHIJKLMNOPQRSTUVW")
   })
