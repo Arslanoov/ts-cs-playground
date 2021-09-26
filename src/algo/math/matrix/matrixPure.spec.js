@@ -1,15 +1,15 @@
-import * as mtrx from "./matrix"
+import * as mtrx from "./matrixPure"
 
 /**
  * @see https://github.com/trekhleb/javascript-algorithms/blob/master/src/algorithms/math/matrix/__tests__/Matrix.test.js
  */
-describe("Math: Matrix", () => {
+describe("Math: Matrix with Vanilla JS", () => {
   it("should throw when trying to add matrices of invalid shapes", () => {
     expect(
-      () => mtrx.dotMatrix([0] as mtrx.MatrixCell[][], [1] as mtrx.MatrixCell[][]),
+      () => mtrx.dotMatrix([0], [1]),
     ).toThrowError("Invalid matrix")
     expect(
-      () => mtrx.dotMatrix([[0]], [1] as mtrx.MatrixCell[][]),
+      () => mtrx.dotMatrix([[0]], [1]),
     ).toThrowError("Invalid matrix")
     expect(
       () => mtrx.dotMatrix([[[0]]], [[1]]),
