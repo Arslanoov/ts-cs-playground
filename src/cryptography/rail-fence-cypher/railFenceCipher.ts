@@ -34,8 +34,8 @@ interface DecodeFenceParams {
 
 //////////////
 
-const UP: Direction = 1
-const DOWN: Direction = -1
+const UP: Direction = -1
+const DOWN: Direction = 1
 
 const buildFence = (rows: number): Fence => Array(rows).fill(null).map(() => [])
 
