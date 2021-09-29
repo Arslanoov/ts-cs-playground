@@ -1,10 +1,10 @@
 export const ALPHABET_CODE_SHIFT = 'A'.codePointAt(0)
 export const ALPHABET_SIZE = 26
 
-import * as mtrx from "../../algo/math/matrix/matrix"
+import * as mtrx from "../../algo/math/matrix/matrixPure"
 
 // Returns matrix
-const generateKey = (key: string): mtrx.Matrix => {
+const generateKey = (key) => {
   const size = Math.sqrt(key.length)
   if (!Number.isInteger(size)) {
     throw new Error("Invalid key")
@@ -21,10 +21,10 @@ const generateKey = (key: string): mtrx.Matrix => {
   )
 }
 
-const generateMessageVector = (message: string): mtrx.Matrix => {
+const generateMessageVector = (message) => {
   return mtrx.generateMatrix(
     [message.length, 1],
-    (indices: number[]) => {
+    (indices) => {
       return message.codePointAt(indices[0]) % ALPHABET_CODE_SHIFT
     }
   )
@@ -37,7 +37,7 @@ const generateMessageVector = (message: string): mtrx.Matrix => {
  * @param message
  * @param key
  */
-export const hillCipherEncrypt = (message: string, key: string): string => {
+export const hillCipherEncrypt = (message, key) => {
   const testRegExp = /^[a-zA-Z]+$/;
   if (!testRegExp.test(message) || !testRegExp.test(key)) {
     throw new Error("Message and key should contain only cover letter");
