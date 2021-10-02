@@ -1,12 +1,12 @@
-import { polynomialHash, polynomialRoll } from "../../../cryptography/polynomial-hash/polynomialHash"
+import { polynomialHash, polynomialRoll } from "../../../cryptography/polynomial-hash/polynomialHashPure"
 
 // Time Complexity: O(n * m)
 // Space complexity: O(p)
-export const rabinKarp = (text: string, word: string): number => {
+export const rabinKarp = (text, word) => {
   const hash = polynomialHash(word)
 
-  let prevWord: string | null = null
-  let currentHash: number | null = null
+  let prevWord = null
+  let currentHash = null
 
   for (let i = 0; i <= (text.length - word.length); i++) {
     const currentWord = text.substring(i, i + word.length)
