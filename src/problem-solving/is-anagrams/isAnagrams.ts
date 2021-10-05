@@ -2,7 +2,7 @@
  * 1. Understand the problem
  * Can I restate the problem with my own words?
  * - Write a function that checks two words for being anagrams (have the same chars in different order)
- * What are inputs that to into the problem?
+ * What are inputs that go into the problem?
  * - Two strings
  * What the output that should come from the solution of the problem?
  * - Boolean
