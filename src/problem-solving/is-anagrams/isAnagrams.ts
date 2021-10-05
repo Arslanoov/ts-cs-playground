@@ -22,7 +22,7 @@
 
 /**
  * Solution with frequency counter pattern
- * Time complexity: O()
+ * Time complexity: O(n)
  * Space complexity: O(n)
  */
 export const isAnagrams = (first: string, second: string): boolean => {
