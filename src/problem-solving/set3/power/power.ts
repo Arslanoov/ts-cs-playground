@@ -1,4 +1,7 @@
+// O(log(n)) solution in algo/math section
+
 // TODO: Add O notation
+
 export const power = (base: number, exp: number): number | null => {
   if (exp < 0) return null
   if (exp === 0) return 1
