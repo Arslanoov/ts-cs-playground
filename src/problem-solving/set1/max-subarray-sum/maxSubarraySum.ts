@@ -31,25 +31,17 @@ export const maxSubarraySum = (input: number[], n: number): number | null => {
 
   // Pointer variables
   let maxSum: number = 0
-  let newSum: number = 0
 
   // Getting default max sum value (first window)
   for (let i = 0; i < n; i++) {
     maxSum += input[i]
   }
 
+  let newSum = maxSum
   // Go through loop
   for (let windowStart = 0; windowStart < input.length - n + 1; windowStart++) {
-    // Exception if n is equal to 1
-    if (n === 1) {
-      if (input[windowStart] > maxSum) {
-        maxSum = input[windowStart]
-      }
-      continue
-    }
-
     // Calculate window sum
-    newSum = maxSum - input[windowStart] + input[windowStart + n]
+    newSum = newSum + input[windowStart + n] - input[windowStart]
 
     // Check is window sum is max
     if (newSum > maxSum) {
