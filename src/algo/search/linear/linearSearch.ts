@@ -1,4 +1,4 @@
-// O(n)
+// Time Complexity: O(n)
 
 export const linearSearchFirst = <T>(items: T[], item: T): number => {
   for (let i = 0; i < items.length; i++) {

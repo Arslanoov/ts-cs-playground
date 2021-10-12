@@ -1,3 +1,6 @@
+/**
+ * Time Complexity: O(log(n))
+ */
 export const binarySearch = (input: number[], value: number): number => {
   let left: number = 0
   let right: number = input.length - 1
