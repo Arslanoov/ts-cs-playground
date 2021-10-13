@@ -1,6 +1,6 @@
-import { bubbleSort } from "./bubbleSortPure"
+import { bubbleSort } from "./bubbleSort"
 
-describe("Algo: Bubble Sort with Vanilla JS", () => {
+describe("Sort: Bubble Sort", () => {
   it("works", () => {
     expect(bubbleSort([2, 4, 7, 1])).toStrictEqual([1, 2, 4, 7])
     expect(bubbleSort([1, 8, 9, 3])).toStrictEqual([1, 3, 8, 9])
