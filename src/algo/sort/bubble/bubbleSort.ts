@@ -1,3 +1,7 @@
+/**
+ * Time Complexity: O(n^2)
+ * Best Case: O(n)
+ */
 export const bubbleSort = (input: number[]): number[] => {
   const arr = [...input]
   let notSwapped: boolean = false
