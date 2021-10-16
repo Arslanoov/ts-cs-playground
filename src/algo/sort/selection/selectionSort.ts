@@ -1,5 +1,6 @@
 /**
  * Time Complexity: O(n^2)
+ * Small swaps count
  */
 export const selectionSort = (input: number[]): number[] => {
   const arr = [...input]
