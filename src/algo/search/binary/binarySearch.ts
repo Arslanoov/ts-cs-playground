@@ -1,12 +1,19 @@
-// O(log(n))
-export const binarySearch = (arr: number[], item: number): number => {
-  let start = 0
-  let end = arr.length - 1
+/**
+ * Time Complexity: O(log(n))
+ */
+export const binarySearch = (input: number[], value: number): number => {
+  let left: number = 0
+  let right: number = input.length - 1
 
-  while (start <= end) {
-    let middle = start + Math.floor((end - start) / 2)
-    if (arr[middle] === item) return middle
-    arr[middle] > item ? end = middle - 1 : start = middle + 1
+  while (left <= right) {
+    let middle: number = left + Math.floor((right - left) / 2)
+    if (input[middle] === value) {
+      return middle
+    } else if (input[middle] < value) {
+      left = middle + 1
+    } else {
+      right = middle - 1
+    }
   }
 
   return -1

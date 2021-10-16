@@ -1,12 +1,10 @@
 import { binarySearch } from "./binarySearch"
 
-describe("Algo: binary search", () => {
+describe("Algo: Linear Search First", () => {
   it("works", () => {
-    expect(binarySearch([], 12)).toBe(-1)
-    expect(binarySearch([1], 1)).toBe(0)
-    expect(binarySearch([1, 2], 2)).toBe(1)
-    expect(binarySearch([1, 5, 10, 12], 1)).toBe(0)
-    expect(binarySearch([1, 3, 7, 11, 16, 17, 22, 25], 17)).toBe(5)
-    expect(binarySearch([1, 3, 7, 11, 16, 17, 22, 25], 0)).toBe(-1)
+    const arr = [5, 6, 63, 1471, 53, 624, 5]
+    expect(binarySearch(arr, 5)).toBe(0)
+    expect(binarySearch(arr, 1471)).toBe(3)
+    expect(binarySearch(arr, 42)).toBe(-1)
   })
 })
