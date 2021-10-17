@@ -31,6 +31,17 @@ export const mergeArrays = (first: number[], second: number[]): number[] => {
     .concat(second.slice(right))
 }
 
+/**
+ * Time Complexity: O(n log(n))
+ */
 export const mergeSort = (input: number[]): number[] => {
+  if (input.length <= 1) return input
 
+  const middle = Math.floor(input.length / 2)
+
+  // Divide and conquer
+  return mergeArrays(
+    mergeSort(input.slice(0, middle)),
+    mergeSort(input.slice(middle))
+  )
 }
