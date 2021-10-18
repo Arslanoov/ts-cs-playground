@@ -30,3 +30,32 @@ export const quickSortNonInPlace = (input: number[]): number[] => {
 
   return sortedLeft.concat(center, sortedRight)
 }
+
+const quickSortInPlacePivot = (input: number[], start: number = 0, end: number = input.length - 1): number => {
+  const swap = (first: number, second: number) => [input[first], input[second]] = [input[second], input[first]]
+  const pivot = input[start]
+
+  let swapIndex: number = start
+
+  for (let i = start + 1; i <= end; i++) {
+    // To the right
+    if (input[i] < pivot) {
+      swapIndex++
+      swap(swapIndex, i)
+    }
+  }
+
+  swap(swapIndex, start)
+
+  return swapIndex
+}
+
+export const quickSortInPlace = (input: number[], start: number = 0, end: number = input.length - 1) => {
+  if (start < end) {
+    const pivot = quickSortInPlacePivot(input, start, end)
+    quickSortInPlace(input, start, pivot - 1)
+    quickSortInPlace(input, pivot + 1, end)
+  }
+
+  return input
+}
