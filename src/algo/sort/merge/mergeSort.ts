@@ -33,6 +33,7 @@ export const mergeArrays = (first: number[], second: number[]): number[] => {
 
 /**
  * Time Complexity: O(n log(n))
+ * Space Complexity: O(n)
  */
 export const mergeSort = (input: number[]): number[] => {
   if (input.length <= 1) return input
