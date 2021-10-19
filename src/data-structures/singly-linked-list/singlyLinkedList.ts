@@ -8,7 +8,9 @@ export class SinglyLinkedListNode<T> {
 
 export interface SinglyLinkedListInterface<T> {
   push(data: T): void
+  unshift(data: T): void
   pop(): void
+  shift(): void
   toArray(): T[]
 }
 
@@ -32,12 +34,26 @@ export class SinglyLinkedList<T> implements SinglyLinkedListInterface<T> {
   }
 
   /**
+   * Time Complexity: O(1)
+   */
+  public unshift(data: T): void {
+    const node = new SinglyLinkedListNode(data)
+
+    const temp = this.head
+    this.head = node
+    node.next = temp
+
+    if (temp === this.tail) {
+      this.tail = this.head.next
+    }
+  }
+
+  /**
    * Time Complexity: O(n)
    */
   public pop(): void {
     if (this.head === this.tail) {
-      this.head = null
-      this.tail = null
+      this.clear()
       return
     }
 
@@ -48,6 +64,22 @@ export class SinglyLinkedList<T> implements SinglyLinkedListInterface<T> {
 
     replaceNode.next = null
     this.tail = replaceNode
+  }
+
+  /**
+   * Time Complexity: O(1)
+   */
+  public shift(): void {
+    if (!this.head) {
+      return
+    }
+
+    if (this.head === this.tail) {
+      this.clear()
+      return
+    }
+
+    this.head = this.head.next
   }
 
   /**
@@ -71,5 +103,10 @@ export class SinglyLinkedList<T> implements SinglyLinkedListInterface<T> {
    */
   public getLength(): number {
     return this.toArray().length
+  }
+
+  private clear(): void {
+    this.head = null
+    this.tail = null
   }
 }

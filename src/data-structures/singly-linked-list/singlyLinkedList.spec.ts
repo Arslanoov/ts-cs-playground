@@ -22,6 +22,17 @@ describe("Linked List", () => {
     expect(list.toArray()).toStrictEqual([10, 1314, 14144])
   })
 
+  it("unshifts data", () => {
+    const list = new SinglyLinkedList<number>()
+
+    list.unshift(10)
+    list.unshift(1314)
+    list.unshift(14144)
+
+    expect(list.getLength()).toBe(3)
+    expect(list.toArray()).toStrictEqual([14144, 1314, 10])
+  })
+
   it("pops data", () => {
     const list = new SinglyLinkedList<number>()
 
@@ -39,6 +50,31 @@ describe("Linked List", () => {
     expect(list.getLength()).toBe(0)
     expect(list.toArray()).toStrictEqual([])
     list.pop()
+    expect(list.getLength()).toBe(0)
+    expect(list.toArray()).toStrictEqual([])
+  })
+
+  it("shifts data", () => {
+    const list = new SinglyLinkedList<number>()
+
+    list.push(12)
+    list.push(10)
+    list.push(1314)
+    list.push(14144)
+
+    list.shift()
+    expect(list.getLength()).toBe(3)
+    expect(list.toArray()).toStrictEqual([10, 1314, 14144])
+    list.shift()
+    expect(list.getLength()).toBe(2)
+    expect(list.toArray()).toStrictEqual([1314, 14144])
+    list.shift()
+    expect(list.getLength()).toBe(1)
+    expect(list.toArray()).toStrictEqual([14144])
+    list.shift()
+    expect(list.getLength()).toBe(0)
+    expect(list.toArray()).toStrictEqual([])
+    list.shift()
     expect(list.getLength()).toBe(0)
     expect(list.toArray()).toStrictEqual([])
   })
