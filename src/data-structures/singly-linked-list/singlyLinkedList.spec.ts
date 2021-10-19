@@ -78,4 +78,33 @@ describe("Linked List", () => {
     expect(list.getLength()).toBe(0)
     expect(list.toArray()).toStrictEqual([])
   })
+
+  it("gets data", () => {
+    const list = new SinglyLinkedList<number>()
+
+    list.push(12)
+    list.push(10)
+    list.push(1314)
+    list.push(14144)
+
+    expect(list.find(0).value).toBe(12)
+    expect(list.find(3).value).toBe(14144)
+    expect(list.find(2).value).toBe(1314)
+    expect(list.find(30)).toBeNull()
+  })
+
+  it("sets data", () => {
+    const list = new SinglyLinkedList<number>()
+
+    list.push(12)
+    list.push(10)
+    list.push(1314)
+    list.push(14144)
+
+    expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
+    list.set(1, 25)
+    expect(list.toArray()).toStrictEqual([12, 25, 1314, 14144])
+    list.set(3, 99)
+    expect(list.toArray()).toStrictEqual([12, 25, 1314, 99])
+  })
 })

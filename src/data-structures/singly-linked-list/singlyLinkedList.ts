@@ -9,8 +9,13 @@ export class SinglyLinkedListNode<T> {
 export interface SinglyLinkedListInterface<T> {
   push(data: T): void
   unshift(data: T): void
+
   pop(): void
   shift(): void
+
+  find(index: number): SinglyLinkedListNode<T> | null
+  set(index: number, value: T): void
+
   toArray(): T[]
 }
 
@@ -80,6 +85,33 @@ export class SinglyLinkedList<T> implements SinglyLinkedListInterface<T> {
     }
 
     this.head = this.head.next
+  }
+
+  /**
+   * Time Complexity: O(n)
+   */
+  public find(index: number): SinglyLinkedListNode<T> | null {
+    if (index < 0) return null
+
+    let current = this.head
+    for (let i = 0; i < index; i++) {
+      if (!current.next) return null
+      current = current.next
+    }
+
+    return current
+  }
+
+  /**
+   * Time Complexity: O(n)
+   */
+  public set(index: number, value: T): void {
+    if (index < 0) return null
+
+    let nodeToReplace = this.find(index)
+    if (nodeToReplace) {
+      nodeToReplace.value = value
+    }
   }
 
   /**
