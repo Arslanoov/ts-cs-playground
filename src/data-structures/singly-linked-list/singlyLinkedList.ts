@@ -14,7 +14,11 @@ export interface SinglyLinkedListInterface<T> {
   shift(): void
 
   find(index: number): SinglyLinkedListNode<T> | null
+
   set(index: number, value: T): void
+  insert(index: number, node: SinglyLinkedListNode<T>): void
+
+  remove(index: number): void
 
   toArray(): T[]
 }
@@ -109,9 +113,47 @@ export class SinglyLinkedList<T> implements SinglyLinkedListInterface<T> {
     if (index < 0) return null
 
     let nodeToReplace = this.find(index)
-    if (nodeToReplace) {
-      nodeToReplace.value = value
+    if (!nodeToReplace) {
+      return
     }
+
+    nodeToReplace.value = value
+  }
+
+  /**
+   * Time Complexity: O(n)
+   */
+  public insert(index: number, node: SinglyLinkedListNode<T>): void {
+    if (index < 0) return null
+
+    let nodeToReplace = index === 0 ? this.head : this.find(index - 1)
+    if (!nodeToReplace) {
+      return
+    }
+
+    nodeToReplace.next = node
+
+    if (nodeToReplace === this.tail) {
+      this.tail = node
+    }
+  }
+
+  /**
+   * Time Complexity: O(n)
+   */
+  public remove(index: number): void {
+    if (index < 0) return null
+    if (index === 0) return this.shift()
+
+    let nodeToReplace = this.find(index - 1)
+    if (!nodeToReplace) {
+      return
+    }
+
+    if (nodeToReplace.next === this.tail) {
+      this.tail = nodeToReplace
+    }
+    nodeToReplace.next = nodeToReplace.next.next
   }
 
   /**
@@ -131,7 +173,7 @@ export class SinglyLinkedList<T> implements SinglyLinkedListInterface<T> {
 
   /**
    * Time Complexity: O(n)
-   * Can be replace with O(1) if add length property
+   * Can be replaced with O(1) algorithm if linked list would have length property
    */
   public getLength(): number {
     return this.toArray().length

@@ -107,4 +107,55 @@ describe("Linked List", () => {
     list.set(3, 99)
     expect(list.toArray()).toStrictEqual([12, 25, 1314, 99])
   })
+
+  it("sets data", () => {
+    const list = new SinglyLinkedList<number>()
+
+    list.push(12)
+    list.push(10)
+    list.push(1314)
+    list.push(14144)
+
+    expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
+
+    const node = new SinglyLinkedListNode<number>(5)
+    node.next = new SinglyLinkedListNode<number>(7)
+
+    // Insert node with own next pointer
+    list.insert(2, node)
+
+    expect(list.toArray()).toStrictEqual([12, 10, 5, 7])
+  })
+
+  it("removes data", () => {
+    const list = new SinglyLinkedList<number>()
+
+    list.push(12)
+    list.push(10)
+    list.push(1314)
+    list.push(14144)
+
+    expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
+
+    list.remove(1)
+
+    expect(list.toArray()).toStrictEqual([12, 1314, 14144])
+
+    list.remove(2)
+
+    expect(list.toArray()).toStrictEqual([12, 1314])
+
+    list.remove(0)
+
+    expect(list.toArray()).toStrictEqual([1314])
+
+    list.remove(10)
+    list.remove(-20)
+
+    expect(list.toArray()).toStrictEqual([1314])
+
+    list.remove(0)
+
+    expect(list.toArray()).toStrictEqual([])
+  })
 })
