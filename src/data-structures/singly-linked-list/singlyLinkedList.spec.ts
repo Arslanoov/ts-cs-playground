@@ -13,9 +13,33 @@ describe("Linked List", () => {
 
   it("pushes data", () => {
     const list = new SinglyLinkedList<number>()
+
     list.push(10)
     list.push(1314)
     list.push(14144)
+
+    expect(list.getLength()).toBe(3)
     expect(list.toArray()).toStrictEqual([10, 1314, 14144])
+  })
+
+  it("pops data", () => {
+    const list = new SinglyLinkedList<number>()
+
+    list.push(10)
+    list.push(1314)
+    list.push(14144)
+
+    list.pop()
+    expect(list.getLength()).toBe(2)
+    expect(list.toArray()).toStrictEqual([10, 1314])
+    list.pop()
+    expect(list.getLength()).toBe(1)
+    expect(list.toArray()).toStrictEqual([10])
+    list.pop()
+    expect(list.getLength()).toBe(0)
+    expect(list.toArray()).toStrictEqual([])
+    list.pop()
+    expect(list.getLength()).toBe(0)
+    expect(list.toArray()).toStrictEqual([])
   })
 })
