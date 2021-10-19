@@ -158,4 +158,23 @@ describe("Linked List", () => {
 
     expect(list.toArray()).toStrictEqual([])
   })
+
+  it("reverses data", () => {
+    const list = new SinglyLinkedList<number>()
+
+    list.push(12)
+    list.push(10)
+    list.push(1314)
+    list.push(14144)
+
+    expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
+
+    list.reverse()
+
+    expect(list.toArray()).toStrictEqual([14144, 1314, 10, 12])
+
+    list.reverse()
+
+    expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
+  })
 })

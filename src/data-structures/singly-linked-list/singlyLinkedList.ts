@@ -20,6 +20,8 @@ export interface SinglyLinkedListInterface<T> {
 
   remove(index: number): void
 
+  reverse(): void
+
   toArray(): T[]
 }
 
@@ -154,6 +156,27 @@ export class SinglyLinkedList<T> implements SinglyLinkedListInterface<T> {
       this.tail = nodeToReplace
     }
     nodeToReplace.next = nodeToReplace.next.next
+  }
+
+  /**
+   * Time Complexity: O(n)
+   */
+  public reverse(): void {
+    let prev: SinglyLinkedListNode<T> | null = null
+    let next: SinglyLinkedListNode<T> | null = null
+    let current: SinglyLinkedListNode<T> | null = this.head
+
+    while (current) {
+      // Reverse algorithm
+      next = current.next
+      current.next = prev
+      prev = current
+      current = next
+    }
+
+    // Swap the head and tail
+    this.tail = this.head
+    this.head = prev
   }
 
   /**
