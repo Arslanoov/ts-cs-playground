@@ -1,18 +1,22 @@
-import { SinglyLinkedListNode, SinglyLinkedList } from "./singlyLinkedList"
+import { DoublyLinkedListNode, DoublyLinkedList } from "./doublyLinkedList"
 
-describe("Linked List", () => {
+describe("Doubly Linked List", () => {
   it("creates node", () => {
-    const node = new SinglyLinkedListNode<number>(5)
+    const node = new DoublyLinkedListNode<number>(5)
     expect(node.value).toBe(5)
+    expect(node.prev).toBeNull()
     expect(node.next).toBeNull()
 
-    node.next = new SinglyLinkedListNode<number>(7)
+    node.next = new DoublyLinkedListNode<number>(7)
+    node.prev = new DoublyLinkedListNode<number>(10)
     expect(node.next.value).toBe(7)
     expect(node.next.next).toBeNull()
+    expect(node.prev.value).toBe(10)
+    expect(node.prev.prev).toBeNull()
   })
 
-  it("pushes data", () => {
-    const list = new SinglyLinkedList<number>()
+  /*it("pushes data", () => {
+    const list = new DoublyLinkedList<number>()
 
     list.push(10)
     list.push(1314)
@@ -23,7 +27,7 @@ describe("Linked List", () => {
   })
 
   it("unshifts data", () => {
-    const list = new SinglyLinkedList<number>()
+    const list = new DoublyLinkedList<number>()
 
     list.unshift(10)
     list.unshift(1314)
@@ -34,7 +38,7 @@ describe("Linked List", () => {
   })
 
   it("pops data", () => {
-    const list = new SinglyLinkedList<number>()
+    const list = new DoublyLinkedList<number>()
 
     list.push(10)
     list.push(1314)
@@ -55,7 +59,7 @@ describe("Linked List", () => {
   })
 
   it("shifts data", () => {
-    const list = new SinglyLinkedList<number>()
+    const list = new DoublyLinkedList<number>()
 
     list.push(12)
     list.push(10)
@@ -80,7 +84,7 @@ describe("Linked List", () => {
   })
 
   it("gets data", () => {
-    const list = new SinglyLinkedList<number>()
+    const list = new DoublyLinkedList<number>()
 
     list.push(12)
     list.push(10)
@@ -94,7 +98,7 @@ describe("Linked List", () => {
   })
 
   it("sets data", () => {
-    const list = new SinglyLinkedList<number>()
+    const list = new DoublyLinkedList<number>()
 
     list.push(12)
     list.push(10)
@@ -109,7 +113,7 @@ describe("Linked List", () => {
   })
 
   it("sets data", () => {
-    const list = new SinglyLinkedList<number>()
+    const list = new DoublyLinkedList<number>()
 
     list.push(12)
     list.push(10)
@@ -118,8 +122,8 @@ describe("Linked List", () => {
 
     expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
 
-    const node = new SinglyLinkedListNode<number>(5)
-    node.next = new SinglyLinkedListNode<number>(7)
+    const node = new DoublyLinkedListNode<number>(5)
+    node.next = new DoublyLinkedListNode<number>(7)
 
     // Insert node with own next pointer
     list.insert(2, node)
@@ -128,7 +132,7 @@ describe("Linked List", () => {
   })
 
   it("removes data", () => {
-    const list = new SinglyLinkedList<number>()
+    const list = new DoublyLinkedList<number>()
 
     list.push(12)
     list.push(10)
@@ -160,7 +164,7 @@ describe("Linked List", () => {
   })
 
   it("reverses data", () => {
-    const list = new SinglyLinkedList<number>()
+    const list = new DoublyLinkedList<number>()
 
     list.push(12)
     list.push(10)
@@ -176,5 +180,5 @@ describe("Linked List", () => {
     list.reverse()
 
     expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
-  })
+  })*/
 })
