@@ -25,7 +25,7 @@ describe("Doubly Linked List", () => {
     expect(list.getLength()).toBe(3)
     expect(list.toArray()).toStrictEqual([10, 1314, 14144])
   })
-  /*
+
   it("unshifts data", () => {
     const list = new DoublyLinkedList<number>()
 
@@ -36,7 +36,6 @@ describe("Doubly Linked List", () => {
     expect(list.getLength()).toBe(3)
     expect(list.toArray()).toStrictEqual([14144, 1314, 10])
   })
-  */
 
   it("pops data", () => {
     const list = new DoublyLinkedList<number>()
@@ -59,7 +58,6 @@ describe("Doubly Linked List", () => {
     expect(list.toArray()).toStrictEqual([])
   })
 
-  /*
   it("shifts data", () => {
     const list = new DoublyLinkedList<number>()
 
@@ -85,6 +83,7 @@ describe("Doubly Linked List", () => {
     expect(list.toArray()).toStrictEqual([])
   })
 
+  /*
   it("gets data", () => {
     const list = new DoublyLinkedList<number>()
 
