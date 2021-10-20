@@ -11,9 +11,10 @@ export class DoublyLinkedListNode<T> {
 
 export interface DoublyLinkedListInterface<T> {
   push(data: T): void
-  /*unshift(data: T): void
 
   pop(): void
+  /*unshift(data: T): void
+
   shift(): void
 
   find(index: number): SinglyLinkedListNode<T> | null
@@ -49,6 +50,21 @@ export class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
     this.tail = node
   }
 
+  public pop(): void {
+    if (!this.head) {
+      return
+    }
+
+    if (this.head === this.tail) {
+      return this.clear()
+    }
+
+    const temp = this.tail
+    this.tail = temp.prev
+    this.tail.next = null
+    temp.prev = null
+  }
+
   /**
    * Time Complexity: O(n)
    */
@@ -70,5 +86,10 @@ export class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
    */
   public getLength(): number {
     return this.toArray().length
+  }
+
+  private clear(): void {
+    this.head = null
+    this.tail = null
   }
 }
