@@ -1,5 +1,3 @@
-import {SinglyLinkedListNode} from "~/data-structures/singly-linked-list/singlyLinkedList";
-
 export class DoublyLinkedListNode<T> {
   public constructor(
     public value: T,
@@ -16,15 +14,14 @@ export interface DoublyLinkedListInterface<T> {
   pop(): void
   shift(): void
 
-  find(index: number): SinglyLinkedListNode<T> | null
+  find(index: number): DoublyLinkedListNode<T> | null
 
-  /*
   set(index: number, value: T): void
-  insert(index: number, node: SinglyLinkedListNode<T>): void
+  insert(index: number, node: DoublyLinkedListNode<T>): void
 
   remove(index: number): void
 
-  reverse(): void*/
+  /* reverse(): void*/
 
   toArray(): T[]
   getLength(): number
@@ -111,7 +108,7 @@ export class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
     temp.next = null
   }
 
-  public find(index: number): SinglyLinkedListNode<T> | null {
+  public find(index: number): DoublyLinkedListNode<T> | null {
     if (index < 0 || index > this.length) return null
 
     let current: DoublyLinkedListNode<T> | null
@@ -144,7 +141,49 @@ export class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
       return
     }
 
+    this.length++
+
     nodeToReplace.value = value
+  }
+
+  public insert(index: number, node: DoublyLinkedListNode<T>): void {
+    // We can remove this line because find already have this checks
+    if (index < 0 || index > this.length) return null
+
+    let nodeToReplace = index === 0 ? this.head : this.find(index - 1)
+    if (!nodeToReplace) {
+      return
+    }
+
+    this.length++
+
+    nodeToReplace.next = node
+
+    if (nodeToReplace === this.tail) {
+      this.tail = node
+    }
+  }
+
+  public remove(index: number): void {
+    if (index < 0) return null
+    if (index === 0) return this.shift()
+    if (index === this.length - 1) return this.pop()
+
+    let nodeToRemove = this.find(index)
+    if (!nodeToRemove) {
+      return
+    }
+
+    let prev = nodeToRemove.prev
+    let next = nodeToRemove.next
+
+    prev.next = next
+    next.prev = prev
+
+    nodeToRemove.prev = null
+    nodeToRemove.next = null
+
+    this.reduceLength()
   }
 
   /**
@@ -153,7 +192,7 @@ export class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
   public toArray(): T[] {
     const items: T[] = []
 
-    let current: SinglyLinkedListNode<T> | null = this.head
+    let current: DoublyLinkedListNode<T> | null = this.head
     while (current) {
       items.push(current.value)
       current = current.next
