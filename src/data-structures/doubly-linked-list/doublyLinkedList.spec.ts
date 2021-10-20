@@ -83,8 +83,7 @@ describe("Doubly Linked List", () => {
     expect(list.toArray()).toStrictEqual([])
   })
 
-  /*
-  it("gets data", () => {
+  it("finds data", () => {
     const list = new DoublyLinkedList<number>()
 
     list.push(12)
@@ -113,7 +112,7 @@ describe("Doubly Linked List", () => {
     expect(list.toArray()).toStrictEqual([12, 25, 1314, 99])
   })
 
-  it("sets data", () => {
+  /*it("inserts data", () => {
     const list = new DoublyLinkedList<number>()
 
     list.push(12)

@@ -79,7 +79,7 @@ describe("Linked List", () => {
     expect(list.toArray()).toStrictEqual([])
   })
 
-  it("gets data", () => {
+  it("finds data", () => {
     const list = new SinglyLinkedList<number>()
 
     list.push(12)
@@ -108,7 +108,7 @@ describe("Linked List", () => {
     expect(list.toArray()).toStrictEqual([12, 25, 1314, 99])
   })
 
-  it("sets data", () => {
+  it("inserts data", () => {
     const list = new SinglyLinkedList<number>()
 
     list.push(12)
