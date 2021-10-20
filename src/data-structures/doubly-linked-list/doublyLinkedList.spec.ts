@@ -15,7 +15,7 @@ describe("Doubly Linked List", () => {
     expect(node.prev.prev).toBeNull()
   })
 
-  /*it("pushes data", () => {
+  it("pushes data", () => {
     const list = new DoublyLinkedList<number>()
 
     list.push(10)
@@ -25,7 +25,7 @@ describe("Doubly Linked List", () => {
     expect(list.getLength()).toBe(3)
     expect(list.toArray()).toStrictEqual([10, 1314, 14144])
   })
-
+  /*
   it("unshifts data", () => {
     const list = new DoublyLinkedList<number>()
 

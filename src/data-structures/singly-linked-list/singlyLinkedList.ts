@@ -23,6 +23,7 @@ export interface SinglyLinkedListInterface<T> {
   reverse(): void
 
   toArray(): T[]
+  getLength(): number
 }
 
 export class SinglyLinkedList<T> implements SinglyLinkedListInterface<T> {
