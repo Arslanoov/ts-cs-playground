@@ -163,7 +163,6 @@ describe("Doubly Linked List", () => {
     expect(list.toArray()).toStrictEqual([])
   })
 
-  /*
   it("reverses data", () => {
     const list = new DoublyLinkedList<number>()
 
@@ -181,5 +180,5 @@ describe("Doubly Linked List", () => {
     list.reverse()
 
     expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
-  })*/
+  })
 })

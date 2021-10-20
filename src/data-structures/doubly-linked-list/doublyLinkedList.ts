@@ -21,7 +21,7 @@ export interface DoublyLinkedListInterface<T> {
 
   remove(index: number): void
 
-  /* reverse(): void*/
+  reverse(): void
 
   toArray(): T[]
   getLength(): number
@@ -108,6 +108,9 @@ export class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
     temp.next = null
   }
 
+  /**
+   * Time Complexity: O(n / 2) -> O(n)
+   */
   public find(index: number): DoublyLinkedListNode<T> | null {
     if (index < 0 || index > this.length) return null
 
@@ -132,6 +135,9 @@ export class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
     return current
   }
 
+  /**
+   * Time Complexity: O(n / 2) -> O(n)
+   */
   public set(index: number, value: T): void {
     // We can remove this line because find already have this checks
     if (index < 0 || index > this.length) return null
@@ -146,6 +152,9 @@ export class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
     nodeToReplace.value = value
   }
 
+  /**
+   * Time Complexity: O(n / 2) -> O(n)
+   */
   public insert(index: number, node: DoublyLinkedListNode<T>): void {
     // We can remove this line because find already have this checks
     if (index < 0 || index > this.length) return null
@@ -164,6 +173,9 @@ export class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
     }
   }
 
+  /**
+   * Time Complexity: O(n / 2) or O(1) -> O(n)
+   */
   public remove(index: number): void {
     if (index < 0) return null
     if (index === 0) return this.shift()
@@ -184,6 +196,31 @@ export class DoublyLinkedList<T> implements DoublyLinkedListInterface<T> {
     nodeToRemove.next = null
 
     this.reduceLength()
+  }
+
+  /**
+   * Time Complexity: O(n)
+   */
+  public reverse(): void {
+    let prev: DoublyLinkedListNode<T> | null = null
+    let next: DoublyLinkedListNode<T> | null = null
+    let current: DoublyLinkedListNode<T> | null = this.head
+
+    while (current) {
+      // Reverse algorithm
+      next = current.next
+      prev = current.prev
+
+      current.next = prev
+      current.prev = next
+
+      prev = current
+      current = next
+    }
+
+    // Swap the head and tail
+    this.tail = this.head
+    this.head = prev
   }
 
   /**
