@@ -9,6 +9,8 @@ export class BSTNode {
 
 export interface BinarySearchTreeInterface {
   insert(value: number): void
+  find(value: number): BSTNode | null
+  contains(value: number): boolean
   toString(): string
 }
 
@@ -38,6 +40,29 @@ export class BinarySearchTree implements BinarySearchTreeInterface {
         currentNode = currentNode.right
       }
     }
+  }
+
+  public find(value: number): BSTNode | null {
+    if (!this.root) return null
+
+    let currentNode: BSTNode | null = this.root
+    while (currentNode) {
+      if (currentNode.value === value) return currentNode
+
+      if (currentNode.value > value) {
+        if (!currentNode.left) return null
+        currentNode = currentNode.left
+      } else {
+        if (!currentNode.right) return null
+        currentNode = currentNode.right
+      }
+    }
+
+    return null
+  }
+
+  public contains(value: number): boolean {
+    return !!this.find(value)
   }
 
   public toString(node: BSTNode | null = this.root) {
