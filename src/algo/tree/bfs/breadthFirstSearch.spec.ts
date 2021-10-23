@@ -1,7 +1,7 @@
 import { BinarySearchTree } from "../../../data-structures/tree/binary-search/binarySearchTree"
-import { breadthDepthSearch } from "./breadthDepthSearch"
+import { breadthFirstSearch } from "./breadthFirstSearch"
 
-describe("Breadth depth search", () => {
+describe("Breadth first search", () => {
   it("works", () => {
     const tree = new BinarySearchTree()
 
@@ -12,6 +12,6 @@ describe("Breadth depth search", () => {
     tree.insert(1)
     tree.insert(3)
 
-    expect(breadthDepthSearch(tree.root)).toStrictEqual([10, 5, 25, 1, 7, 3])
+    expect(breadthFirstSearch(tree.root)).toStrictEqual([10, 5, 25, 1, 7, 3])
   })
 })

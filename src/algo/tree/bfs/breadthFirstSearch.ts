@@ -1,8 +1,7 @@
 import { Queue } from "../../../data-structures/queue/from-linked-list/Queue"
 import { BSTNode } from "../../../data-structures/tree/binary-search/binarySearchTree"
 
-
-export const breadthDepthSearch = (root: BSTNode) => {
+export const breadthFirstSearch = (root: BSTNode) => {
   const items: number[] = []
 
   const queue = new Queue()
