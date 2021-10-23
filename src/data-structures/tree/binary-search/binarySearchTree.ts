@@ -14,8 +14,10 @@ export interface BinarySearchTreeInterface {
   toString(): string
 }
 
+// TODO: Add remove
+
 export class BinarySearchTree implements BinarySearchTreeInterface {
-  private root: BSTNode | null = null
+  public root: BSTNode | null = null
 
   public insert(value: number): void {
     const node = new BSTNode(value)
