@@ -1,28 +1,29 @@
 import { QueueInterface } from "../from-array/Queue"
-import { LinkedList } from "../../linked-list/LinkedList"
+import { SinglyLinkedList } from "../../singly-linked-list/singlyLinkedList"
 
 export class Queue<T> implements QueueInterface<T> {
-  private list = new LinkedList<T>()
+  private list = new SinglyLinkedList<T>()
 
   enqueue(value: T) {
-    this.list.append(value)
+    this.list.push(value)
   }
 
   dequeue(): T | null {
-    const head = this.list.removeHead()
+    const head = this.list.head
+    this.list.remove(0)
     return head ? head.value : null
   }
 
   peek(): T | null {
-    if (!this.list.first) {
+    if (!this.list.head) {
       return null
     }
 
-    return this.list.first.value
+    return this.list.head.value
   }
 
   isEmpty(): boolean {
-    return !this.list.first
+    return !this.list.head
   }
 
   toArray(): T[] {
