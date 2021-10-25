@@ -1,5 +1,6 @@
 interface MaxHeapInterface {
   insert(value: number): void
+  removeMax(): void
 }
 
 export class MaxHeap implements MaxHeapInterface {
@@ -10,7 +11,64 @@ export class MaxHeap implements MaxHeapInterface {
     this.bubble()
   }
 
-  public bubble(): void {
+  public removeMax() {
+    const first = this.data[0]
+    const last = this.data.pop()
+
+    if (this.data.length > 0) {
+      this.data[0] = last
+      this.sinkDown()
+    }
+
+    return first
+  }
+
+  public get values(): number[] {
+    return this.data
+  }
+
+  private sinkDown(): void {
+    const first = this.values[0]
+    const length = this.values.length
+
+    let index = 0
+
+    while (true) {
+      let leftChildIndex = MaxHeap.getLeftChildIndex(index)
+      let rightChildIndex = MaxHeap.getRightChildIndex(index)
+
+      let leftChild: number
+      let rightChild: number
+      let swapIndex: number | null = null
+
+      if (leftChildIndex < length) {
+        leftChild = this.data[leftChildIndex]
+        if (leftChild > first) {
+          swapIndex = leftChildIndex
+        }
+      }
+
+      if (rightChildIndex < length) {
+        rightChild = this.data[rightChildIndex]
+        if (
+          (swapIndex === null && rightChild > first) ||
+          (swapIndex !== null && rightChild > leftChild)
+        ) {
+          swapIndex = rightChildIndex
+        }
+      }
+
+      if (swapIndex === null) {
+        break
+      }
+
+      this.data[index] = this.data[swapIndex]
+      this.data[swapIndex] = first
+      index = swapIndex
+    }
+  }
+
+  private bubble(): void {
     let index = this.data.length - 1
     const el = this.data[index]
 
@@ -28,7 +86,11 @@ export class MaxHeap implements MaxHeapInterface {
     }
   }
 
-  public get values(): number[] {
-    return this.data
+  private static getLeftChildIndex(index: number): number {
+    return index * 2 + 1
+  }
+
+  private static getRightChildIndex(index: number): number {
+    return index * 2 + 2
   }
 }
