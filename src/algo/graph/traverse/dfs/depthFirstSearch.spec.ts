@@ -27,7 +27,6 @@ describe("Graph traversal: DFS", () => {
     graph.addEdge("some2", "some3")
     graph.addEdge("some3", "some")
 
-    // TODO: Check
     expect(dfsIterative(graph, "some2")).toStrictEqual(["some2", "some3", "some"])
   })
 })
