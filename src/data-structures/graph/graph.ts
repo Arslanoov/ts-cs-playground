@@ -9,7 +9,7 @@ type List<T> = {
   [key: string]: T[]
 }
 
-export class Graph<T> implements GraphInterface {
+export class Graph<T = any> implements GraphInterface {
   public list: List<T> = {}
 
   public addVertex(vertex: string): void {
