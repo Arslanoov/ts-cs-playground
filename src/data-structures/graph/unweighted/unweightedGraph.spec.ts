@@ -1,8 +1,8 @@
-import { Graph } from "./graph"
+import { UnweightedGraph } from "./unweightedGraph"
 
 describe("Graph", () => {
   test("add vertex", () => {
-    const graph = new Graph()
+    const graph = new UnweightedGraph()
 
     graph.addVertex("some")
     graph.addVertex("some2")
@@ -16,7 +16,7 @@ describe("Graph", () => {
   })
 
   test("add edge", () => {
-    const graph = new Graph()
+    const graph = new UnweightedGraph()
 
     graph.addVertex("some")
     graph.addVertex("some2")
@@ -32,7 +32,7 @@ describe("Graph", () => {
   })
 
   test("remove edge", () => {
-    const graph = new Graph()
+    const graph = new UnweightedGraph()
 
     graph.addVertex("some")
     graph.addVertex("some2")
@@ -50,7 +50,7 @@ describe("Graph", () => {
   })
 
   test("remove vertex", () => {
-    const graph = new Graph()
+    const graph = new UnweightedGraph()
 
     graph.addVertex("some")
     graph.addVertex("some2")

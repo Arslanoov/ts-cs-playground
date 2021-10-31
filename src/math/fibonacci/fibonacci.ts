@@ -4,7 +4,10 @@
 // fib(3) -> [1, 1, 2] (1 + 1)
 // fib(4) -> [1, 1, 2, 3] (1 + 2)
 
-// TODO: Add DP approach
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
 export const fib = (pos: number): number[] => {
   const path: number[] = []
   let current: number = 1
@@ -22,6 +25,10 @@ export const fib = (pos: number): number[] => {
   return path
 }
 
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
 export const fibValue = (pos: number): number => {
   let current: number = 1
   let prev: number = 0
@@ -37,17 +44,25 @@ export const fibValue = (pos: number): number => {
   return prev
 }
 
-export const fibRecursionValue = (pos: number, path: {
+/**
+ * Dynamic programming approach (memoization)
+ * Time Complexity: O(n) (instead of O(2^n) without DP)
+ */
+export const fibDP = (pos: number, path: {
   [key: number]: number
 } = {}): number => {
   if (path[pos]) return path[pos]
   if (pos < 1) return 0
   if (pos === 1) return 1
 
-  return path[pos] = fibRecursionValue(pos - 1, path) + fibRecursionValue(pos - 2, path)
+  return path[pos] = fibDP(pos - 1, path) + fibDP(pos - 2, path)
 }
 
-export const fibFormula = (pos: number): number => {
+/**
+ * Time Complexity: O(1)
+ */
+export const fibFormula = (pos: number): number | null => {
+  if (pos > 70 || pos < 1) return null
   const sqrt = Math.sqrt(5)
   return Math.floor((((1 + sqrt) / 2) ** pos) / sqrt + 0.5)
 }
