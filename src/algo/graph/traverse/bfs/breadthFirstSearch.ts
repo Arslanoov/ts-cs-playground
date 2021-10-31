@@ -1,7 +1,8 @@
-import { Graph } from "../../../../data-structures/graph/graph"
+import { UnweightedGraph } from "../../../../data-structures/graph/unweighted/unweightedGraph"
+import { WeightedGraph } from "../../../../data-structures/graph/weighted/weightedGraph"
 import { Queue } from "../../../../data-structures/queue/from-linked-list/Queue"
 
-export const bfs = (graph: Graph, startVertex: string) => {
+export const bfs = (graph: UnweightedGraph | WeightedGraph, startVertex: string) => {
   const list = graph.list
   const results = []
   const visited: {

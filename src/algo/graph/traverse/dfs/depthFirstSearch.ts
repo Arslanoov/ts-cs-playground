@@ -1,7 +1,8 @@
-import { Graph } from "../../../../data-structures/graph/graph"
+import { UnweightedGraph } from "../../../../data-structures/graph/unweighted/unweightedGraph"
+import { WeightedGraph } from "../../../../data-structures/graph/weighted/weightedGraph"
 import { Stack } from "../../../../data-structures/stack/from-linked-list/Stack"
 
-export const dfsRecursive = (graph: Graph, startVertex: string) => {
+export const dfsRecursive = (graph: UnweightedGraph | WeightedGraph, startVertex: string) => {
   const list = graph.list
   const results = []
   const visited: {
@@ -22,7 +23,7 @@ export const dfsRecursive = (graph: Graph, startVertex: string) => {
   return results
 }
 
-export const dfsIterative = (graph: Graph, startVertex: string) => {
+export const dfsIterative = (graph: UnweightedGraph | WeightedGraph, startVertex: string) => {
   const list = graph.list
   const results = []
   const visited: {

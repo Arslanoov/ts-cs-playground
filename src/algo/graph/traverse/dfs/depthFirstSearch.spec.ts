@@ -1,9 +1,9 @@
-import { Graph } from "../../../../data-structures/graph/graph"
+import { UnweightedGraph } from "../../../../data-structures/graph/unweighted/unweightedGraph"
 import { dfsRecursive, dfsIterative } from "./depthFirstSearch"
 
 describe("Graph traversal: DFS", () => {
   test("recursive way", () => {
-    const graph = new Graph()
+    const graph = new UnweightedGraph()
 
     graph.addVertex("some")
     graph.addVertex("some2")
@@ -17,7 +17,7 @@ describe("Graph traversal: DFS", () => {
   })
 
   test("iterative way", () => {
-    const graph = new Graph()
+    const graph = new UnweightedGraph()
 
     graph.addVertex("some")
     graph.addVertex("some2")

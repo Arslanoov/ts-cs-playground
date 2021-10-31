@@ -1,7 +1,7 @@
 export const ALPHABET_CODE_SHIFT = 'A'.codePointAt(0)
 export const ALPHABET_SIZE = 26
 
-import * as mtrx from "../../algo/math/matrix/matrix"
+import * as mtrx from "../../../math/matrix/matrix"
 
 // Returns matrix
 const generateKey = (key: string): mtrx.Matrix => {

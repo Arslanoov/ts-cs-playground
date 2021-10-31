@@ -1,13 +1,13 @@
-import { LinkedList } from "../../../data-structures/linked-list/LinkedList"
+import { SinglyLinkedList } from "../../../../data-structures/singly-linked-list/singlyLinkedList"
 import { traversalReverse } from "./linkedListTraversalReverse"
 
 describe("Algo: LL traversal reverse", () => {
   it("should traverse linked list", () => {
-    const linkedList = new LinkedList()
+    const linkedList = new SinglyLinkedList()
 
-    linkedList.append(1)
-    linkedList.append(2)
-    linkedList.append(3)
+    linkedList.push(1)
+    linkedList.push(2)
+    linkedList.push(3)
 
     const traversedNodeValues = []
     const traversalCallback = (nodeValue) => {

@@ -1,9 +1,9 @@
-import { Graph } from "../../../../data-structures/graph/graph"
+import { UnweightedGraph } from "../../../../data-structures/graph/unweighted/unweightedGraph"
 import { bfs } from "./breadthFirstSearch"
 
 describe("Graph traversal: BFS", () => {
   it("works", () => {
-    const graph = new Graph()
+    const graph = new UnweightedGraph()
 
     graph.addVertex("some")
     graph.addVertex("some2")
