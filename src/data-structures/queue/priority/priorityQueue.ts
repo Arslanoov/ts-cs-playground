@@ -9,6 +9,7 @@ class PriorityItem<T> {
 interface PriorityQueueInterface<T> {
   enqueue(value: T, priority: number): void
   dequeue(): T | null
+  isEmpty(): boolean
 }
 
 // TODO: Add MinHeap inheritance
@@ -96,6 +97,10 @@ export class PriorityQueue<T> implements PriorityQueueInterface<T> {
 
       index = parentIndex
     }
+  }
+
+  public isEmpty(): boolean {
+    return this.data.length === 0
   }
 
   private static getLeftChildIndex(index: number): number {
