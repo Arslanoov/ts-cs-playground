@@ -1,7 +1,6 @@
 import { WeightedGraph } from "../../../data-structures/graph/weighted/weightedGraph"
 import { PriorityQueue } from "../../../data-structures/queue/priority/priorityQueue"
 
-// TODO: Finish
 export const dijkstraAlgo = (graph: WeightedGraph, startVertex: string, endVertex: string) => {
   const queue = new PriorityQueue()
   const dist = {}

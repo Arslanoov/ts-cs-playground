@@ -56,7 +56,7 @@ export class PriorityQueue<T> implements PriorityQueueInterface<T> {
 
       if (leftChildIndex < length) {
         leftChild = this.data[leftChildIndex]
-        if (leftChild.priority > first.priority) {
+        if (leftChild.priority < first.priority) {
           swapIndex = leftChildIndex
         }
       }
@@ -64,8 +64,8 @@ export class PriorityQueue<T> implements PriorityQueueInterface<T> {
       if (rightChildIndex < length) {
         rightChild = this.data[rightChildIndex]
         if (
-          (swapIndex === null && rightChild.priority > first.priority) ||
-          (swapIndex !== null && rightChild.priority > leftChild.priority)
+          (swapIndex === null && rightChild.priority < first.priority) ||
+          (swapIndex !== null && rightChild.priority < leftChild.priority)
         ) {
           swapIndex = rightChildIndex
         }
@@ -88,7 +88,7 @@ export class PriorityQueue<T> implements PriorityQueueInterface<T> {
     while (index > 0) {
       let parentIndex = Math.floor((index - 1) / 2)
       let parent = this.data[parentIndex]
-      if (el.priority <= parent.priority) {
+      if (el.priority >= parent.priority) {
         break
       }
 
