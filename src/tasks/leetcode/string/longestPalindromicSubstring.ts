@@ -29,7 +29,7 @@ function longestPalindrome(s: string): string {
     maxLength % 2 === 0 ? longestPalindromeStartIndex + 1: longestPalindromeStartIndex,
     longestPalindromeEndIndex + 1
   )
-};
+}
 
 function findPalindromeLength(s: string, startPoint: number, endPoint: number): number {
   let leftPointer: number = startPoint
