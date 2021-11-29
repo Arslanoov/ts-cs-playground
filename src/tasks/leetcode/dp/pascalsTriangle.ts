@@ -13,7 +13,6 @@ function generate(numRows: number): number[][] {
 
     row.push(1)
     result.push(row)
-
   }
 
   return result
