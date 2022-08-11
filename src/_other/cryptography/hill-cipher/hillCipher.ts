@@ -54,6 +54,7 @@ export const hillCipherEncrypt = (message: string, key: string): string => {
 
   let output = ""
   for (let row = 0; row < cipherVector.length; row++) {
+    // @ts-ignore
     output += String.fromCharCode((cipherVector[row] % ALPHABET_SIZE) + ALPHABET_CODE_SHIFT)
   }
 
