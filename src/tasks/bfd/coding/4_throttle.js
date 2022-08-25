@@ -1,4 +1,3 @@
-
 /**
  * @param {Function} func
  * @param {number} wait
