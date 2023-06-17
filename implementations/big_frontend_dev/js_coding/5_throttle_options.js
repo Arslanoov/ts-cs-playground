@@ -1,8 +1,9 @@
 /**
  * @param {(...args: any[]) => any} func
  * @param {number} wait
- * @param {boolean} option.leading
- * @param {boolean} option.trailing
+ * @param options
+ * @param {boolean} options.leading
+ * @param {boolean} options.trailing
  * @returns {(...args: any[]) => any}
  */
 function throttle(func, wait, options = { leading: true, trailing: true }) {

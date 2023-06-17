@@ -1,5 +1,3 @@
-
-
 const dataTypes = [
   {
     obj: Map,

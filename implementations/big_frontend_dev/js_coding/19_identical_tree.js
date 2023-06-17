@@ -2,7 +2,7 @@
 /**
  * @param {HTMLElement} rootA
  * @param {HTMLElement} rootB - rootA and rootB are clone of each other
- * @param {HTMLElement} nodeA
+ * @param {HTMLElement} target
  */
 const findCorrespondingNode = (rootA, rootB, target) => {
   if (rootA === target) {

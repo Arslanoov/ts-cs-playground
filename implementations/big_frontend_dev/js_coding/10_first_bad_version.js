@@ -1,10 +1,6 @@
 
-/*
- type TypIsBad = (version: number) => boolean
- */
-
 /**
- * @param {TypIsBad} isBad
+ * @param { (version: number) => boolean } isBad
  */
 function firstBadVersion(isBad) {
   return (version) => {

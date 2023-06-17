@@ -1,6 +1,6 @@
 /**
- * @param {integer} from
- * @param {integer} to
+ * @param {int} from
+ * @param {int} to
  */
 function* range(from, to) {
   while (from <= to) {

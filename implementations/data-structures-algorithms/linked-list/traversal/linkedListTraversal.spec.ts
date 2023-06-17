@@ -13,8 +13,8 @@ describe("Algo: LL traversal", () => {
     linkedList.push(2)
     linkedList.push(3)
 
-    const traversedNodeValues: SinglyLinkedListNode[] = []
-    const traversalCallback = (nodeValue: SinglyLinkedListNode) => {
+    const traversedNodeValues: SinglyLinkedListNode<number>[] = []
+    const traversalCallback = (nodeValue: SinglyLinkedListNode<number>) => {
       traversedNodeValues.push(nodeValue)
     }
 

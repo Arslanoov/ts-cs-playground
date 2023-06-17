@@ -1,15 +1,5 @@
-/*
-type Callback = (error: Error, data: any) => void
-
-type AsyncFunc = (
-   callback: Callback,
-   data: any
-) => void
-
-*/
-
 /**
- * @param {AsyncFunc[]} funcs
+ * @param funcs {Array.<Object>}
  * @return {(callback: Callback) => void}
  */
 function sequence(funcs) {

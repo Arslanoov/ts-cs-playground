@@ -46,6 +46,4 @@ function parse(str) {
       return acc;
     }, {});
   }
-
-  return;
 }

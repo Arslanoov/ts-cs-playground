@@ -1,6 +1,6 @@
 /**
  * @param {Function} func
- * @param {(args:[]) => string }  [resolver] - cache key generator
+ * @param { (args:[]) => string }  [resolver] - cache key generator
  */
 function memo(func, resolver) {
   const cache = new Map();

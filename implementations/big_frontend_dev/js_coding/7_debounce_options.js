@@ -1,6 +1,7 @@
 /**
  * @param {(...args: any[]) => any} func
  * @param {number} wait
+ * @param options
  * @param {boolean} options.leading
  * @param {boolean} options.trailing
  * @returns {(...args: any[]) => any}

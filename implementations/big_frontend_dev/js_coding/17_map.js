@@ -13,6 +13,7 @@ class NodeStore {
     node.key = Symbol()
     this.data[node.key] = value
   }
+
   /**
    * @param {Node} node
    * @return {any}

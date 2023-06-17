@@ -9,8 +9,8 @@ describe("Algo: LL traversal reverse", () => {
     linkedList.push(2)
     linkedList.push(3)
 
-    const traversedNodeValues = []
-    const traversalCallback = (nodeValue) => {
+    const traversedNodeValues: number[] = []
+    const traversalCallback = (nodeValue: number) => {
       traversedNodeValues.push(nodeValue)
     }
 

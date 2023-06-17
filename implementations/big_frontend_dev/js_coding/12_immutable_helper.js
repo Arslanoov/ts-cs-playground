@@ -1,8 +1,6 @@
-
-
 /**
  * @param {any} data
- * @param {Object} command
+ * @param command
  */
 function update(data, command) {
     for (const [key, value] of Object.entries(command)) {

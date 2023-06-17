@@ -1,9 +1,3 @@
-
-/**
- * @param {object[]} items
- * @excludes { Array< {k: string, v: any} >} excludes
- */
-
 /**
  * @param {object[]} items
  * @param { Array< {k: string, v: any} >} excludes
