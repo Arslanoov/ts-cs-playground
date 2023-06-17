@@ -1,4 +1,4 @@
-import { polynomialHash, polynomialRoll } from "../../../cryptography/polynomial-hash/polynomialHash"
+import { polynomialHash, polynomialRoll } from "../../../common/cryptography/polynomial-hash/polynomialHash"
 
 // Time Complexity: O(n * m)
 // Space complexity: O(p)

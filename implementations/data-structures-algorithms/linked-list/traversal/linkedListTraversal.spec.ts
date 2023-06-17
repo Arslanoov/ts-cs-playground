@@ -1,4 +1,4 @@
-import { SinglyLinkedList } from "../../../../data-structures/singly-linked-list/singlyLinkedList"
+import { SinglyLinkedList, SinglyLinkedListNode } from "../../../data-structures/singly-linked-list/singlyLinkedList"
 import { traversal } from "./linkedListTraversal"
 
 /**
@@ -13,8 +13,8 @@ describe("Algo: LL traversal", () => {
     linkedList.push(2)
     linkedList.push(3)
 
-    const traversedNodeValues = []
-    const traversalCallback = (nodeValue) => {
+    const traversedNodeValues: SinglyLinkedListNode[] = []
+    const traversalCallback = (nodeValue: SinglyLinkedListNode) => {
       traversedNodeValues.push(nodeValue)
     }
 

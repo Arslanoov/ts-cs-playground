@@ -3,7 +3,14 @@
 For more information,
 <a href="https://github.com/Arslanoov/cs-playground">visit this page.</a>
 
-Folders structure (inside the src folder):
+### Data structures implemented:
+1. 
+
+### Problems solved:
+
+
+
+### Folders structure (inside the src folder):
 * _other - Other algorithms and data structures
 * algo - Algorithms
 * bits - Bits algorithms

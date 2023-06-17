@@ -1,4 +1,4 @@
-import { MinHeap } from "../../../../data-structures/tree/heap/binary/first/min/MinHeap"
+import { MinHeap } from "../../../data-structures/tree/heap/binary/first/min/MinHeap"
 
 export const heapSort = (arr: number[]): number[] => {
   const sorted: number[] = []

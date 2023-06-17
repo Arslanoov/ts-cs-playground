@@ -1,4 +1,4 @@
-import { SinglyLinkedList, SinglyLinkedListNode } from "../../../../data-structures/singly-linked-list/singlyLinkedList"
+import { SinglyLinkedList, SinglyLinkedListNode } from "../../../data-structures/singly-linked-list/singlyLinkedList"
 
 // O(n)
 export const traversal = <T>(list: SinglyLinkedList<T>, callback: (item: T) => void) => {

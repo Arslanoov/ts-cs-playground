@@ -1,4 +1,4 @@
-import { SinglyLinkedList } from "../../../../data-structures/singly-linked-list/singlyLinkedList"
+import { SinglyLinkedList } from "../../../data-structures/singly-linked-list/singlyLinkedList"
 import { traversalReverse } from "./linkedListTraversalReverse"
 
 describe("Algo: LL traversal reverse", () => {

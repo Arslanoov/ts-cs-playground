@@ -1,4 +1,4 @@
-import { SinglyLinkedList, SinglyLinkedListNode } from "../../../../data-structures/singly-linked-list/singlyLinkedList"
+import { SinglyLinkedList, SinglyLinkedListNode } from "../../../data-structures/singly-linked-list/singlyLinkedList"
 
 type Callback<T> = (item: T) => void
 

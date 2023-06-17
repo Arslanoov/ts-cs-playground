@@ -2,7 +2,7 @@ const path = require("path")
 
 module.exports = {
   mode: "development",
-  entry: path.resolve(__dirname, "src", "index.ts"),
+  entry: path.resolve(__dirname, "implementations", "index.ts"),
 
   output: {
     path: path.resolve(__dirname, "dist"),
