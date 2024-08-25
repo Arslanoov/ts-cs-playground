@@ -1,9 +1,9 @@
-import { SinglyLinkedList } from "../../../data-structures/singly-linked-list/singlyLinkedList"
+import { OLD_singlyLinkedList } from "../../../data-structures/singly-linked-list/OLD_singlyLinkedList"
 import { traversalReverse } from "./linkedListTraversalReverse"
 
 describe("Algo: LL traversal reverse", () => {
   it("should traverse linked list", () => {
-    const linkedList = new SinglyLinkedList()
+    const linkedList = new OLD_singlyLinkedList()
 
     linkedList.push(1)
     linkedList.push(2)

@@ -1,8 +1,8 @@
 import { QueueInterface } from "../from-array/Queue"
-import { SinglyLinkedList } from "../../singly-linked-list/singlyLinkedList"
+import { OLD_singlyLinkedList } from "../../singly-linked-list/OLD_singlyLinkedList"
 
 export class Queue<T> implements QueueInterface<T> {
-  private list = new SinglyLinkedList<T>()
+  private list = new OLD_singlyLinkedList<T>()
 
   enqueue(value: T) {
     this.list.push(value)

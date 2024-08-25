@@ -1,210 +1,208 @@
-export class SinglyLinkedListNode<T> {
-  public constructor(
-    public value: T,
-    public next: SinglyLinkedListNode<T> | null = null
-  ) {
-  }
+type LinkedListValue = any;
+
+interface SinglyLinkedListNodeInterface<T = LinkedListValue> {
+    value: T;
+    next?: SinglyLinkedListNodeInterface;
 }
 
-export interface SinglyLinkedListInterface<T> {
-  push(data: T): void
-  unshift(data: T): void
+interface SinglyLinkedListInterface<T = LinkedListValue> {
+    append(value: SinglyLinkedListNodeInterface): void;
+    appendValue(value: T): void;
+    prepend(value: SinglyLinkedListNodeInterface): void;
+    prependValue(value: T): void;
+    pop(): void;
+    shift(): void;
+    findByIndex(index: number): SinglyLinkedListNodeInterface | null;
+    set(index: number, value?: T): void;
+    remove(index: number): void;
+    reverse(): void;
 
-  pop(): void
-  shift(): void
+    getLength(): number;
+    toArray(): SinglyLinkedListNodeInterface<T>[];
+}
 
-  find(index: number): SinglyLinkedListNode<T> | null
+export class SinglyLinkedListNode<T = LinkedListValue> implements SinglyLinkedListNodeInterface<T> {
+    public value: T;
+    public next: SinglyLinkedListNode | null;
 
-  set(index: number, value: T): void
-  insert(index: number, node: SinglyLinkedListNode<T>): void
-
-  remove(index: number): void
-
-  reverse(): void
-
-  toArray(): T[]
-  getLength(): number
+    constructor(value: T, next: SinglyLinkedListNode = null) {
+        this.value = value;
+        this.next = next;
+    }
 }
 
 export class SinglyLinkedList<T> implements SinglyLinkedListInterface<T> {
-  public head: SinglyLinkedListNode<T> | null = null
-  public tail: SinglyLinkedListNode<T> | null = null
+    public head: SinglyLinkedListNodeInterface;
 
-  /**
-   * Time Complexity: O(1)
-   */
-  public push(data: T): void {
-    const node = new SinglyLinkedListNode(data)
-    if (!this.head) {
-      this.head = node
-      this.tail = node
-      return
+    append(value: SinglyLinkedListNodeInterface<T>) {
+        if (!this.head) {
+            this.head = value;
+            return;
+        }
+
+        let current = this.head;
+
+        while (current?.next) {
+            current = current.next;
+        }
+
+        current.next = value;
     }
 
-    this.tail.next = node
-    this.tail = node
-  }
-
-  /**
-   * Time Complexity: O(1)
-   */
-  public unshift(data: T): void {
-    const node = new SinglyLinkedListNode(data)
-
-    const temp = this.head
-    this.head = node
-    node.next = temp
-
-    if (temp === this.tail) {
-      this.tail = this.head.next
-    }
-  }
-
-  /**
-   * Time Complexity: O(n)
-   */
-  public pop(): void {
-    if (this.head === this.tail) {
-      this.clear()
-      return
+    appendValue(value: LinkedListValue) {
+        this.append({
+            value,
+        });
     }
 
-    let replaceNode: SinglyLinkedListNode<T> | null = this.head
-    while (replaceNode.next !== this.tail) {
-      replaceNode = replaceNode.next
+    prepend(value: SinglyLinkedListNodeInterface) {
+        if (!this.head) {
+            this.head = value;
+            return;
+        }
+
+        value.next = this.head;
+        this.head = value;
     }
 
-    replaceNode.next = null
-    this.tail = replaceNode
-  }
-
-  /**
-   * Time Complexity: O(1)
-   */
-  public shift(): void {
-    if (!this.head) {
-      return
+    prependValue(value: T) {
+        this.prepend({
+            value
+        });
     }
 
-    if (this.head === this.tail) {
-      this.clear()
-      return
+    pop() {
+        if (!this.head) {
+            return;
+        }
+
+        if (!this.head.next) {
+            this.head = null;
+        }
+
+        let current = this.head;
+        let prev = null;
+
+        while (current?.next) {
+            prev = current;
+            current = current.next;
+        }
+
+        if (prev) {
+            prev.next = null;
+        }
     }
 
-    this.head = this.head.next
-  }
-
-  /**
-   * Time Complexity: O(n)
-   */
-  public find(index: number): SinglyLinkedListNode<T> | null {
-    if (index < 0) return null
-
-    let current = this.head
-    for (let i = 0; i < index; i++) {
-      if (!current.next) return null
-      current = current.next
+    shift() {
+        this.head = this.head?.next;
     }
 
-    return current
-  }
+    findByIndex(index: number) {
+        if (!this.head) {
+            return null;
+        }
 
-  /**
-   * Time Complexity: O(n)
-   */
-  public set(index: number, value: T): void {
-    if (index < 0) return null
+        let current = this.head;
+        while (index > 0) {
+            current = current?.next;
+            index--;
+        }
 
-    let nodeToReplace = this.find(index)
-    if (!nodeToReplace) {
-      return
+        return current || null;
     }
 
-    nodeToReplace.value = value
-  }
+    set(index: number, value?: T) {
+        if (!this.head) {
+            return;
+        }
 
-  /**
-   * Time Complexity: O(n)
-   */
-  public insert(index: number, node: SinglyLinkedListNode<T>): void {
-    if (index < 0) return null
+        let current = this.head;
+        let currentIndex = 0;
 
-    let nodeToReplace = index === 0 ? this.head : this.find(index - 1)
-    if (!nodeToReplace) {
-      return
+        while (currentIndex !== index) {
+            if (!current.next) {
+                return;
+            }
+
+            current = current.next;
+            currentIndex++;
+        }
+
+        current.value = value;
     }
 
-    nodeToReplace.next = node
+    remove(index: number) {
+        if (!this.head || index < 0) {
+            return;
+        }
 
-    if (nodeToReplace === this.tail) {
-      this.tail = node
-    }
-  }
+        if (index === 0) {
+            this.head = this.head.next;
+            return;
+        }
 
-  /**
-   * Time Complexity: O(n)
-   */
-  public remove(index: number): void {
-    if (index < 0) return null
-    if (index === 0) return this.shift()
+        let currentIndex = 0;
+        let current = this.head;
 
-    let nodeToReplace = this.find(index - 1)
-    if (!nodeToReplace) {
-      return
-    }
+        while (currentIndex + 1 !== index) {
+            if (!current.next || currentIndex + 1 > index) {
+                return;
+            }
 
-    if (nodeToReplace.next === this.tail) {
-      this.tail = nodeToReplace
-    }
-    nodeToReplace.next = nodeToReplace.next.next
-  }
+            current = current.next;
+            currentIndex++;
+        }
 
-  /**
-   * Time Complexity: O(n)
-   */
-  public reverse(): void {
-    let prev: SinglyLinkedListNode<T> | null = null
-    let next: SinglyLinkedListNode<T> | null = null
-    let current: SinglyLinkedListNode<T> | null = this.head
-
-    while (current) {
-      // Reverse algorithm
-      next = current.next
-      current.next = prev
-      prev = current
-      current = next
+        current.next = current.next.next;
     }
 
-    // Swap the head and tail
-    this.tail = this.head
-    this.head = prev
-  }
+    reverse() {
+        let prevNode = null;
+        let nextNode = null;
+        let current = this.head;
 
-  /**
-   * Time Complexity: O(n)
-   */
-  public toArray(): T[] {
-    const items: T[] = []
+        while (current) {
+            nextNode = current.next;
+            current.next = prevNode;
 
-    let current: SinglyLinkedListNode<T> | null = this.head
-    while (current) {
-      items.push(current.value)
-      current = current.next
+            prevNode = current;
+            current = nextNode;
+        }
+
+        this.head = prevNode;
     }
 
-    return items
-  }
+    getLength() {
+        if (!this.head) {
+            return 0;
+        }
 
-  /**
-   * Time Complexity: O(n)
-   * Can be replaced with O(1) algorithm if linked list would have length property
-   */
-  public getLength(): number {
-    return this.toArray().length
-  }
+        let length = 1;
+        let current = this.head;
 
-  private clear(): void {
-    this.head = null
-    this.tail = null
-  }
+        while (current?.next) {
+            current = current.next;
+            length++;
+        }
+
+        return length;
+    }
+
+    toArray() {
+        if (!this.head) {
+            return [];
+        }
+
+        const arr: SinglyLinkedListNodeInterface[] = [];
+        let current = this.head;
+
+        arr.push(current.value);
+
+        while (current?.next) {
+            arr.push(current.next.value);
+            current = current.next;
+        }
+
+        return arr;
+    }
 }

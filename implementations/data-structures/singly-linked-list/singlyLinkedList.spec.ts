@@ -11,23 +11,23 @@ describe("Linked List", () => {
     expect(node.next.next).toBeNull()
   })
 
-  it("pushes data", () => {
+  it("appends data", () => {
     const list = new SinglyLinkedList<number>()
 
-    list.push(10)
-    list.push(1314)
-    list.push(14144)
+    list.appendValue(10)
+    list.appendValue(1314)
+    list.appendValue(14144)
 
     expect(list.getLength()).toBe(3)
     expect(list.toArray()).toStrictEqual([10, 1314, 14144])
   })
 
-  it("unshifts data", () => {
+  it("prepends data", () => {
     const list = new SinglyLinkedList<number>()
 
-    list.unshift(10)
-    list.unshift(1314)
-    list.unshift(14144)
+    list.prependValue(10)
+    list.prependValue(1314)
+    list.prependValue(14144)
 
     expect(list.getLength()).toBe(3)
     expect(list.toArray()).toStrictEqual([14144, 1314, 10])
@@ -36,10 +36,11 @@ describe("Linked List", () => {
   it("pops data", () => {
     const list = new SinglyLinkedList<number>()
 
-    list.push(10)
-    list.push(1314)
-    list.push(14144)
+    list.appendValue(10)
+    list.appendValue(1314)
+    list.appendValue(14144)
 
+    expect(list.toArray()).toStrictEqual([10, 1314, 14144])
     list.pop()
     expect(list.getLength()).toBe(2)
     expect(list.toArray()).toStrictEqual([10, 1314])
@@ -57,10 +58,10 @@ describe("Linked List", () => {
   it("shifts data", () => {
     const list = new SinglyLinkedList<number>()
 
-    list.push(12)
-    list.push(10)
-    list.push(1314)
-    list.push(14144)
+    list.appendValue(12)
+    list.appendValue(10)
+    list.appendValue(1314)
+    list.appendValue(14144)
 
     list.shift()
     expect(list.getLength()).toBe(3)
@@ -79,27 +80,27 @@ describe("Linked List", () => {
     expect(list.toArray()).toStrictEqual([])
   })
 
-  it("finds data", () => {
+  it("finds data by index", () => {
     const list = new SinglyLinkedList<number>()
 
-    list.push(12)
-    list.push(10)
-    list.push(1314)
-    list.push(14144)
+    list.appendValue(12)
+    list.appendValue(10)
+    list.appendValue(1314)
+    list.appendValue(14144)
 
-    expect(list.find(0).value).toBe(12)
-    expect(list.find(3).value).toBe(14144)
-    expect(list.find(2).value).toBe(1314)
-    expect(list.find(30)).toBeNull()
+    expect(list.findByIndex(0).value).toBe(12)
+    expect(list.findByIndex(3).value).toBe(14144)
+    expect(list.findByIndex(2).value).toBe(1314)
+    expect(list.findByIndex(30)).toBeNull()
   })
 
   it("sets data", () => {
     const list = new SinglyLinkedList<number>()
 
-    list.push(12)
-    list.push(10)
-    list.push(1314)
-    list.push(14144)
+    list.appendValue(12)
+    list.appendValue(10)
+    list.appendValue(1314)
+    list.appendValue(14144)
 
     expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
     list.set(1, 25)
@@ -108,13 +109,13 @@ describe("Linked List", () => {
     expect(list.toArray()).toStrictEqual([12, 25, 1314, 99])
   })
 
-  it("inserts data", () => {
+  it("appends node", () => {
     const list = new SinglyLinkedList<number>()
 
-    list.push(12)
-    list.push(10)
-    list.push(1314)
-    list.push(14144)
+    list.appendValue(12)
+    list.appendValue(10)
+    list.appendValue(1314)
+    list.appendValue(14144)
 
     expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
 
@@ -122,18 +123,18 @@ describe("Linked List", () => {
     node.next = new SinglyLinkedListNode<number>(7)
 
     // Insert node with own next pointer
-    list.insert(2, node)
+    list.append(node)
 
-    expect(list.toArray()).toStrictEqual([12, 10, 5, 7])
+    expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144, 5, 7])
   })
 
   it("removes data", () => {
     const list = new SinglyLinkedList<number>()
 
-    list.push(12)
-    list.push(10)
-    list.push(1314)
-    list.push(14144)
+    list.appendValue(12)
+    list.appendValue(10)
+    list.appendValue(1314)
+    list.appendValue(14144)
 
     expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
 
@@ -162,10 +163,10 @@ describe("Linked List", () => {
   it("reverses data", () => {
     const list = new SinglyLinkedList<number>()
 
-    list.push(12)
-    list.push(10)
-    list.push(1314)
-    list.push(14144)
+    list.appendValue(12)
+    list.appendValue(10)
+    list.appendValue(1314)
+    list.appendValue(14144)
 
     expect(list.toArray()).toStrictEqual([12, 10, 1314, 14144])
 
